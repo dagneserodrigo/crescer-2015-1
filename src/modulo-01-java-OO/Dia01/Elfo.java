@@ -65,6 +65,24 @@ public class Elfo
     // camelCase: public void atirarFlechaDourada
     // PascalCase: public void AtirarFlechaDourada
     
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        
+        String textoFlechas =  this.flechas > 1 ? this.flechas + " flechas" : this.flechas + " flecha";
+        String textoExperiencia =  this.experiencia == 1 ? this.experiencia + " nível" : this.experiencia + " níveis";
+        
+        //return  this.nome + " possui " + textoFlechas + " e " + textoExperiencia + " de experiência";
+        builder.append(this.nome);
+        builder.append(" possui ");
+        builder.append(textoFlechas);
+        builder.append(" e ");
+        builder.append(textoExperiencia);
+        builder.append(" de experiência.");
+        
+        return builder.toString();
+        
+    }
+    
     
     
     

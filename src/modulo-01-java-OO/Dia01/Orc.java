@@ -32,4 +32,15 @@ public class Orc
     public int getVida() {
         return this.life;
     }
+    
+    
+    /**
+     * Imprime a vida atual do Orc.
+     * 
+     * @return String com a vida atual do orc. Ex:
+     * "Vida atual: 110"
+     */
+    public String toString() {
+        return "Vida atual: " + this.life;
+    }
 }
