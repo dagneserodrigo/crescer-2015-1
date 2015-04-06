@@ -44,6 +44,18 @@ public class Elfo
         orcAtingido.recebeFlechada();
     }
     
+    public String getNome() {
+        return this.nome;
+    }
+    
+    public int getFlechas() {
+        return this.flechas;
+    }
+    
+    public int getExperiencia() {
+        return this.experiencia;
+    }
+    
     /*public void setFlechas(int novaQtdFlechas) {
         if (novaQtdFlechas > flechas) {
             flechas = novaQtdFlechas;
