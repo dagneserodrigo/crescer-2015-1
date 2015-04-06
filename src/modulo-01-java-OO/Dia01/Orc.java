@@ -17,9 +17,8 @@ public class Orc
     /**
      * Construtor para objetos da classe Orc
      */
-    public Orc(String nome)
+    public Orc()
     {
-        this.nome = nome;
     }
 
     /**
@@ -28,5 +27,9 @@ public class Orc
     public void recebeFlechada()
     {
         this.life -= 10;
+    }
+    
+    public int getVida() {
+        return this.life;
     }
 }

@@ -28,6 +28,30 @@ public class OrcTest
     
     @Test
     public void orcRecebeAtaque() {
+        Orc umOrc;
+        umOrc = new Orc();
+        int esperado = 100;
+
+        umOrc.recebeFlechada();
+        int resultadoObtido = umOrc.getVida();
+        
+        assertEquals(esperado, resultadoObtido);
+    }
+
+    @Test
+    public void orcRecebeVariosAtaques() {
+        int resultadoObtido = 0;
+        
+        Orc umOrc;
+        umOrc = new Orc();
+        int esperado = (umOrc.getVida() - (5000 * 10));
+        
+        for(int i = 0; i < 5000; i++) {
+            umOrc.recebeFlechada();
+            resultadoObtido = umOrc.getVida();
+        }
+        
+        assertEquals(esperado, resultadoObtido);
     }
 }
 
