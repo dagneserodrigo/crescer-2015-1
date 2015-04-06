@@ -13,13 +13,23 @@ import org.junit.Test;
 public class ElfoTest
 {
     @Test
-    public void nascimentoElfo() {
+    public void nascimentoElfoDefault() {
         Elfo umElfo;
         umElfo = new Elfo("Celeborn");
         
-        assertNotNull(umElfo.getNome());
-        assertNotNull(umElfo.getFlechas());
-        assertNotNull(umElfo.getExperiencia());
+        assertEquals("Celeborn", umElfo.getNome());
+        assertEquals(42, umElfo.getFlechas());
+        assertEquals(0, umElfo.getExperiencia());
+    }
+    
+    @Test
+    public void nascimentoElfoComOutrosDados() {
+        Elfo umElfo;
+        umElfo = new Elfo("Celeborn", 44);
+        
+        assertEquals("Celeborn", umElfo.getNome());
+        assertEquals(44, umElfo.getFlechas());
+        assertEquals(0, umElfo.getExperiencia());
     }
     
     @Test
