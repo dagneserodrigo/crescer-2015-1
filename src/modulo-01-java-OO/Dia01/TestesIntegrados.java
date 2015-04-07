@@ -1,15 +1,15 @@
 
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Testes integrados entre objetos Elfo e Orc
+ * Testes integrados entre objetos Elfo e Orc.
  *
- * @author  Rodrigo Dagnese
+ * @author  CWI Software
  */
+
 public class TestesIntegrados
 {
     @Test
@@ -24,12 +24,15 @@ public class TestesIntegrados
         // Assert
         int experienciaEsperada = 2;
         int flechasEsperadas = 40;
-        int vidaEsperadaFirstOrc = 100;
-        int vidaEsperadaSecondOrc = 100;
+        int vidaEsperadaOrc = 100;
+        String toStringEsperadoOrc = "Vida atual: 100";
         
         assertEquals(experienciaEsperada, elfo.getExperiencia());
         assertEquals(flechasEsperadas, elfo.getFlechas());
-        assertEquals(vidaEsperadaFirstOrc, firstOrc.getVida());
-        assertEquals(vidaEsperadaSecondOrc, secondOrc.getVida());        
+        assertEquals(vidaEsperadaOrc, firstOrc.getVida());
+        assertEquals(vidaEsperadaOrc, secondOrc.getVida());
+        assertEquals(toStringEsperadoOrc, firstOrc.toString());
+        assertEquals(toStringEsperadoOrc, secondOrc.toString());        
     }
+
 }

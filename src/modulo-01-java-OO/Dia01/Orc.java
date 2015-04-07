@@ -7,7 +7,6 @@
 public class Orc
 {
     // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    private String nome;
     private int life;
     
     {
@@ -24,7 +23,7 @@ public class Orc
     /**
      * Orc recebe flechada e perde 10 pontos de vida
      */
-    public void recebeFlechada()
+    public void recebeAtaque()
     {
         this.life -= 10;
     }

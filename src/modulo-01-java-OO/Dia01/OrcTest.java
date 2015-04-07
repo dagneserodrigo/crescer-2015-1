@@ -32,24 +32,64 @@ public class OrcTest
         umOrc = new Orc();
         int esperado = 100;
 
-        umOrc.recebeFlechada();
+        umOrc.recebeAtaque();
         int resultadoObtido = umOrc.getVida();
         
         assertEquals(esperado, resultadoObtido);
     }
 
+   
     @Test
-    public void orcRecebeVariosAtaques() {
-        int resultadoObtido = 0;
+    public void orcRecebeAtaqueDuasVezes() {
+        // Arrange - Montagem dos dados de teste
+        Orc umOrc = new Orc();
+        // Act
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        // Assert - Verificação
+        int esperado = 90;
+        int resultadoObtido = umOrc.getVida();
+
+        assertEquals(esperado, resultadoObtido);
+    }
+    
+    @Test
+    public void orcRecebeAtaqueCincoVezes() {
+        // Arrange - Montagem dos dados de teste
+        Orc umOrc = new Orc();
+        // Act
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        // Assert - Verificação
+        int esperado = 60;
+        int resultadoObtido = umOrc.getVida();
         
-        Orc umOrc;
-        umOrc = new Orc();
-        int esperado = (umOrc.getVida() - (5000 * 10));
-        
-        for(int i = 0; i < 5000; i++) {
-            umOrc.recebeFlechada();
-            resultadoObtido = umOrc.getVida();
-        }
+        assertEquals(esperado, resultadoObtido);
+    }
+    
+    @Test
+    public void orcRecebeAtaqueDozeVezes() {
+        // Arrange - Montagem dos dados de teste
+        Orc umOrc = new Orc();
+        // Act
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        // Assert - Verificação
+        int esperado = -10;
+        int resultadoObtido = umOrc.getVida();
         
         assertEquals(esperado, resultadoObtido);
     }
@@ -62,49 +102,56 @@ public class OrcTest
         String resultadoObtido = orc.toString();
         // Assert
         String esperado = "Vida atual: 110";
-        
         assertEquals(esperado, resultadoObtido);
     }
     
     @Test
-    public void orcToStringRetornaVidaAposReceberAtaque() {
+    public void orcToStringAposReceberAtaque() {
         // Arrange
         Orc orc = new Orc();
         // Act
-        orc.recebeFlechada();
+        orc.recebeAtaque();
         String resultadoObtido = orc.toString();
         // Assert
         String esperado = "Vida atual: 100";
-        
         assertEquals(esperado, resultadoObtido);
     }
     
     @Test
-    public void orcToStringRetornaVidaAposReceberVariosAtaques() {
-        // Arrange
-        Orc orc = new Orc();
+    public void orcToStringAposReceberDozeAtaques() {
+        // Arrange - Montagem dos dados de teste
+        Orc umOrc = new Orc();
         // Act
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        orc.recebeFlechada();
-        
-        String resultadoObtido = orc.toString();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        umOrc.recebeAtaque();
+        String resultadoObtido = umOrc.toString();
         // Assert
         String esperado = "Vida atual: -10";
-        
         assertEquals(esperado, resultadoObtido);
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
-
 
 
 
