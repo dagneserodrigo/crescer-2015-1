@@ -11,13 +11,11 @@ public class Orc
     private int life;
     private int experiencia;
     private Status status;
-    private double numeroGerado;
     
     
     {
         status = Status.VIVO;
         life = 110;
-        numeroGerado = 0.0;
     }
 
     /**
@@ -32,14 +30,17 @@ public class Orc
      */
     public void recebeAtaque()
     {
-        double numero = this.gerarNumero();
-        
-        if( numero < 0 ) {
-            this.experiencia += 2;
-        } else if ( numero > 0 && numero < 100 ){
-            
+        if ( this.life > 0 ) {
+            double numero = this.gerarNumero();
+
+            if( numero < 0 ) {
+                this.experiencia += 2;
+            } else if ( numero > 100 ){
+                this.status = Status.FERIDO;
+                this.life -= 10;
+            }
         } else {
-            this.life -= 10;
+            this.status = Status.MORTO;
         }
     }
     
@@ -59,35 +60,41 @@ public class Orc
     }
     
     private double gerarNumero() {
-        
+       double numeroGerado = 0.0;
+
        if ( this.nome.length() > 5 ) 
-            this.numeroGerado += 65.0;
+            numeroGerado += 65.0;
         else
-            this.numeroGerado -= 60.0;
+            numeroGerado -= 60.0;
 
        if ( this.life > 30 && this.life < 60 )
-           this.numeroGerado = this.numeroGerado * 2;
+           numeroGerado *= 2;
        else if ( this.life < 20 )
-           this.numeroGerado = this.numeroGerado * 3;
+           numeroGerado *= 3;
 
        if ( this.status == Status.FUGINDO )
-           this.numeroGerado = this.numeroGerado / 2;
+           numeroGerado /= 2;
        else if( this.status == Status.CACANDO || this.status == Status.DORMINDO)
-           this.numeroGerado += 1.0;
+           numeroGerado ++;
 
        if ( this.experiencia % 2 == 0 )
-           this.numeroGerado = Math.pow(this.numeroGerado, 3);
+           numeroGerado = Math.pow(numeroGerado, 3);
        else if ( this.experiencia % 3 == 0 && this.experiencia > 2 )
-           this.numeroGerado = Math.pow(this.numeroGerado, 2);
-            
-       return this.numeroGerado;
+           numeroGerado = Math.pow(numeroGerado, 2);
+
+       return numeroGerado;
     }
     
     public void setStatus(Status status) {
         this.status = status;
     }
     
-    public double getNumeroGerado() {
-        return this.numeroGerado;
+    
+    /**
+     * @param experiencia Experiencia atribuida á um Orc.
+     */
+    public void setExperiencia( int experiencia ) {
+        this.experiencia = experiencia;
     }
+
 }
