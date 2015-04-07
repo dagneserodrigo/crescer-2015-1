@@ -24,8 +24,8 @@ public class TestesIntegrados
         // Assert
         int experienciaEsperada = 2;
         int flechasEsperadas = 40;
-        int vidaEsperadaOrc = 100;
-        String toStringEsperadoOrc = "Vida atual: 100";
+        int vidaEsperadaOrc = 110;
+        String toStringEsperadoOrc = "Vida atual: 110";
         
         assertEquals(experienciaEsperada, elfo.getExperiencia());
         assertEquals(flechasEsperadas, elfo.getFlechas());
