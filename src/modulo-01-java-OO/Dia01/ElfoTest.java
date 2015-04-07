@@ -91,7 +91,7 @@ public class ElfoTest
     public void elfoAtiraFlechaEmUmOrc() {
         // Arrange
         Elfo elfo = new Elfo("Legolas");
-        Orc orc = new Orc();
+        Orc orc = new Orc("Orc");
         // Act
         elfo.atirarFlecha(orc);
         // Assert
@@ -106,7 +106,7 @@ public class ElfoTest
     public void elfoAtiraFlechasDuasVezesNoMesmoOrc() {
         // Arrange
         Elfo elfo = new Elfo("Legolas");
-        Orc orc = new Orc();
+        Orc orc = new Orc("Orc");
         // Act
         elfo.atirarFlecha(orc);
         String resultadoObtido = elfo.toString();
@@ -121,16 +121,16 @@ public class ElfoTest
     public void elfoToStringRetornaInformacaoAposAtirarVariasFlechas() {
         // Arrange
         Elfo elfo = new Elfo("Legolas");
-        Orc oneOrc = new Orc();
-        Orc twoOrc = new Orc();
-        Orc threeOrc = new Orc();
-        Orc fourOrc = new Orc();
-        Orc fiveOrc = new Orc();
-        Orc sixOrc = new Orc();
-        Orc sevenOrc = new Orc();
-        Orc eigthOrc = new Orc();
-        Orc nineOrc = new Orc();
-        Orc tenOrc = new Orc();
+        Orc oneOrc   = new Orc("Orc");
+        Orc twoOrc   = new Orc("Orc");
+        Orc threeOrc = new Orc("Orc");
+        Orc fourOrc  = new Orc("Orc");
+        Orc fiveOrc  = new Orc("Orc");
+        Orc sixOrc   = new Orc("Orc");
+        Orc sevenOrc = new Orc("Orc");
+        Orc eigthOrc = new Orc("Orc");
+        Orc nineOrc  = new Orc("Orc");
+        Orc tenOrc   = new Orc("Orc");
         // Act
         elfo.atirarFlecha(oneOrc);
         elfo.atirarFlecha(twoOrc);
@@ -155,7 +155,7 @@ public class ElfoTest
     public void elfoAtiraFlechasCincoVezesNoMesmoOrc() {
         // Arrange
         Elfo elfo = new Elfo("Legolas", 4);
-        Orc orc = new Orc();
+        Orc orc = new Orc("Orc");
         // Act
         elfo.atirarFlecha(orc);
         elfo.atirarFlecha(orc);
