@@ -187,4 +187,16 @@ public class Orc
             }
         }
     }
+    
+    public ItemDoInventario getItemComMaiorQuantidade() {
+         int maior = 0, indexItem = 0;
+         for ( ItemDoInventario item : this.itens ) {
+             int i = this.itens.indexOf(item);
+             if(item.getQuantidade() > maior) {
+                 indexItem = i;
+             }
+         }
+         
+         return itens.get( indexItem );
+    }
 }
