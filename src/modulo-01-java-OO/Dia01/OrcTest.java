@@ -1,9 +1,8 @@
-
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.*;
 
 /**
  * A classe de teste OrcTest.
@@ -170,7 +169,7 @@ public class OrcTest
     public void orcNasceComNomeInformado() {
         // Arrange - Montagem dos dados de teste
         Orc umOrc;
-        String esperado = "Urukhai";	
+        String esperado = "Urukhai";    
         // Act - Execução da ação de testes
         umOrc = new Orc(esperado);
         // Assert - Verificação
@@ -183,7 +182,7 @@ public class OrcTest
     public void orcNasceComNomeVazioInformado() {
         // Arrange - Montagem dos dados de teste
         Orc umOrc;
-        String esperado = "";	
+        String esperado = "";   
         // Act - Execução da ação de testes
         umOrc = new Orc(esperado);
         // Assert - Verificação
@@ -196,7 +195,7 @@ public class OrcTest
     public void orcNasceComNomeNuloInformado() {
         // Arrange - Montagem dos dados de teste
         Orc umOrc;
-        String esperado = null;	
+        String esperado = null; 
         // Act - Execução da ação de testes
         umOrc = new Orc(esperado);
         // Assert - Verificação
@@ -263,6 +262,52 @@ public class OrcTest
         
         assertEquals(vidaEsperada, orc.getVida());
         assertEquals(statusEsperado, orc.getStatus());
+    }
+    
+    @Test
+    public void orcComNomeRecebeNovoItem() {   
+        Orc orc = new Orc("Sauron");
+        ItemDoInventario item = new ItemDoInventario( 1, "espada" );
+        
+        orc.adicionarItem( item );
+        
+        ArrayList<ItemDoInventario> resultadoEsperado = new ArrayList<ItemDoInventario>();
+        resultadoEsperado.add( item );
+        
+        assertEquals( resultadoEsperado, orc.getItens() );
+        
+    }
+    
+    @Test
+    public void orcSemNomeRecebeNovoItem() {   
+        Orc orc = new Orc();
+        ItemDoInventario item = new ItemDoInventario( 1, "espada" );
+        
+        orc.adicionarItem( item );
+        
+        ArrayList<ItemDoInventario> resultadoEsperado = new ArrayList<ItemDoInventario>();
+        resultadoEsperado.add( item );
+        
+        assertEquals( resultadoEsperado, orc.getItens() );
+        
+    }
+    
+    @Test
+    public void orcComNomePerdeItem() {   
+        Orc orc = new Orc("Sauron");
+        ItemDoInventario espada = new ItemDoInventario( 1, "espada" );
+        ItemDoInventario lanca = new ItemDoInventario( 1, "lança" );
+        
+        orc.adicionarItem( espada );
+        orc.adicionarItem( lanca );
+        
+        orc.perderItem( lanca );
+        
+        ArrayList<ItemDoInventario> resultadoEsperado = new ArrayList<ItemDoInventario>();
+        resultadoEsperado.add( espada );
+        
+        assertEquals( resultadoEsperado, orc.getItens() );
+        
     }
 }
 

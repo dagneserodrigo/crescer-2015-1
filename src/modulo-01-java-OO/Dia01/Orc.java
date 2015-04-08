@@ -1,3 +1,4 @@
+import java.util.*;
 /**
  * Define objetos do tipo Orc
  * 
@@ -8,6 +9,7 @@ public class Orc
     private int experiencia, vida = 110;
     private String nome;
     private Status status = Status.VIVO;
+    private ArrayList<ItemDoInventario> itens = new ArrayList<ItemDoInventario>();
 
     {
         //vida = 110;
@@ -79,6 +81,10 @@ public class Orc
         this.experiencia = experiencia;
     }
     
+    public ArrayList getItens() {
+        return itens;
+    }
+    
     /**
      * Imprime a vida atual do Orc.
      * 
@@ -130,5 +136,24 @@ public class Orc
         }
                 
         return numeroGerado;
+    }
+    
+    /**
+     * Adiciona item ao Orc.
+     * 
+     * @param novoItem Item a ser adicionado ao Orc;
+     */
+    public void adicionarItem( ItemDoInventario novoItem ) {
+       this.itens.add( novoItem );
+    }
+    
+    
+    /**
+     * Remove item do Orc.
+     * 
+     * @param itemParaRemover Item a ser removido do Orc;
+     */
+    public void perderItem( ItemDoInventario itemParaRemover) {
+        itens.remove( itemParaRemover );
     }
 }
