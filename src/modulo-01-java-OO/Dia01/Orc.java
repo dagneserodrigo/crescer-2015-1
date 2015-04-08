@@ -10,6 +10,7 @@ public class Orc
     private String nome;
     private Status status = Status.VIVO;
     private ArrayList<ItemDoInventario> itens = new ArrayList<ItemDoInventario>();
+    private final int NUMERO_SORTE = 3481;
 
     {
         //vida = 110;
@@ -81,7 +82,7 @@ public class Orc
         this.experiencia = experiencia;
     }
     
-    public ArrayList getItens() {
+    public ArrayList<ItemDoInventario> getItens() {
         return itens;
     }
     
@@ -155,5 +156,35 @@ public class Orc
      */
     public void perderItem( ItemDoInventario itemParaRemover) {
         itens.remove( itemParaRemover );
+    }
+    
+    public String getDescricoesItens() {
+        StringBuilder builder = new StringBuilder();
+        int numeroDeItens = this.itens.size();
+        
+        for (int i = 0; i < numeroDeItens; i++) {
+            boolean ultimoIndice = i == numeroDeItens -1;
+
+            builder.append(
+                ultimoIndice ? 
+                itens.get(i).toString() :
+                itens.get(i).toString() + ", "
+            );
+        }
+        
+        return builder.toString();
+    }
+    
+    public void tentarSorte() {
+        int numeroDeItens = this.itens.size();
+        
+        double numero = this.gerarNumero();
+        
+        if ( numero == NUMERO_SORTE ) {
+            for (int i = 0; i < numeroDeItens; i++) {
+                int novaQuantidade = itens.get(i).getQuantidade() + 1000;
+                itens.get(i).setQuantidade( novaQuantidade );
+            }
+        }
     }
 }
