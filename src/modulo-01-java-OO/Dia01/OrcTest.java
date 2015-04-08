@@ -370,7 +370,7 @@ public class OrcTest
         assertEquals( 1005, adaga.getQuantidade());        
     }
     
-     @Test
+    @Test
     public void orcTentarSorteNaoFazNada() {
         // Arrange
         Orc urukhai = new Orc();
@@ -383,6 +383,32 @@ public class OrcTest
         ItemDoInventario lanca = urukhai.getItens().get(1);
         assertEquals(3, pocao.getQuantidade());
         assertEquals(1, lanca.getQuantidade());
+    }
+    
+    @Test
+    public void getItemComMaiorQuantidade() {
+        // Arrange
+        Orc sauron = new Orc("Sauron");
+        sauron.adicionarItem(new ItemDoInventario(1, "Lança"));
+        sauron.adicionarItem(new ItemDoInventario(5, "Escudo"));
+        ItemDoInventario itemEsperado = sauron.getItens().get(1);
+        // Act
+        ItemDoInventario itemObtido = sauron.getItemComMaiorQuantidade();
+        // Assert
+        assertEquals(itemEsperado, itemObtido);
+    }
+    
+    @Test
+    public void getItemComMaiorQuantidadeComQuantidadesIguais() {
+        // Arrange
+        Orc sauron = new Orc("Sauron");
+        sauron.adicionarItem(new ItemDoInventario(1, "Lança"));
+        sauron.adicionarItem(new ItemDoInventario(1, "Escudo"));
+        ItemDoInventario itemEsperado = sauron.getItens().get(0);
+        // Act
+        ItemDoInventario itemObtido = sauron.getItemComMaiorQuantidade();
+        // Assert
+        assertEquals(itemEsperado, itemObtido);
     }
 }
 
