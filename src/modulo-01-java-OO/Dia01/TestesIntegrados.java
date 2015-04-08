@@ -1,4 +1,3 @@
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -9,30 +8,40 @@ import org.junit.Test;
  *
  * @author  CWI Software
  */
-
 public class TestesIntegrados
 {
     @Test
     public void umElfoAtiraEmDoisOrcs() {
-        // Arange
-        Elfo elfo = new Elfo("Legolas");
-        Orc firstOrc = new Orc("Orc");
-        Orc secondOrc = new Orc("Orc");
+        // Arrange
+        Elfo elfo = new Elfo("O Elfo");
+        Orc orc1 = new Orc("Urukhai 1");
+        Orc orc2 = new Orc("Urukhai 2");
         // Act
-        elfo.atirarFlecha(firstOrc);
-        elfo.atirarFlecha(secondOrc);
+        elfo.atirarFlecha(orc1);
+        elfo.atirarFlecha(orc2);
         // Assert
         int experienciaEsperada = 2;
         int flechasEsperadas = 40;
-        int vidaEsperadaOrc = 110;
-        String toStringEsperadoOrc = "Vida atual: 110";
+        int vidaEsperadaOrc = 100;
+        String toStringEsperadoOrc = "Vida atual: 100";
         
         assertEquals(experienciaEsperada, elfo.getExperiencia());
         assertEquals(flechasEsperadas, elfo.getFlechas());
-        assertEquals(vidaEsperadaOrc, firstOrc.getVida());
-        assertEquals(vidaEsperadaOrc, secondOrc.getVida());
-        assertEquals(toStringEsperadoOrc, firstOrc.toString());
-        assertEquals(toStringEsperadoOrc, secondOrc.toString());        
+        assertEquals(vidaEsperadaOrc, orc1.getVida());
+        assertEquals(vidaEsperadaOrc, orc2.getVida());
+        assertEquals(toStringEsperadoOrc, orc1.toString());
+        assertEquals(toStringEsperadoOrc, orc2.toString());
     }
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -1,13 +1,12 @@
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * The test class ElfoTest.
+ * Testes unitários para a classe Elfo.
  *
- * @author  Rodrigo Dagnese
+ * @author  CWI Software
  */
 public class ElfoTest
 {
@@ -91,7 +90,7 @@ public class ElfoTest
     public void elfoAtiraFlechaEmUmOrc() {
         // Arrange
         Elfo elfo = new Elfo("Legolas");
-        Orc orc = new Orc("Orc");
+        Orc orc = new Orc();
         // Act
         elfo.atirarFlecha(orc);
         // Assert
@@ -106,56 +105,23 @@ public class ElfoTest
     public void elfoAtiraFlechasDuasVezesNoMesmoOrc() {
         // Arrange
         Elfo elfo = new Elfo("Legolas");
-        Orc orc = new Orc("Orc");
+        Orc orc = new Orc();
         // Act
         elfo.atirarFlecha(orc);
-        String resultadoObtido = elfo.toString();
+        elfo.atirarFlecha(orc);
         // Assert
-        String resultadoEsperado = "Legolas possui 41 flechas e 1 nível de experiência.";
+        int experienciaEsperada = 2;
+        int flechasEsperadas = 40;
         
-        assertEquals(resultadoEsperado, resultadoObtido);
-        
-    }
-    
-    @Test
-    public void elfoToStringRetornaInformacaoAposAtirarVariasFlechas() {
-        // Arrange
-        Elfo elfo = new Elfo("Legolas");
-        Orc oneOrc   = new Orc("Orc");
-        Orc twoOrc   = new Orc("Orc");
-        Orc threeOrc = new Orc("Orc");
-        Orc fourOrc  = new Orc("Orc");
-        Orc fiveOrc  = new Orc("Orc");
-        Orc sixOrc   = new Orc("Orc");
-        Orc sevenOrc = new Orc("Orc");
-        Orc eigthOrc = new Orc("Orc");
-        Orc nineOrc  = new Orc("Orc");
-        Orc tenOrc   = new Orc("Orc");
-        // Act
-        elfo.atirarFlecha(oneOrc);
-        elfo.atirarFlecha(twoOrc);
-        elfo.atirarFlecha(threeOrc);
-        elfo.atirarFlecha(fourOrc);
-        elfo.atirarFlecha(fiveOrc);
-        elfo.atirarFlecha(sixOrc);
-        elfo.atirarFlecha(sevenOrc);
-        elfo.atirarFlecha(eigthOrc);
-        elfo.atirarFlecha(nineOrc);
-        elfo.atirarFlecha(tenOrc);
-        
-        String resultadoObtido = elfo.toString();
-        // Assert
-        String resultadoEsperado = "Legolas possui 32 flechas e 10 níveis de experiência.";
-        
-        assertEquals(resultadoEsperado, resultadoObtido);
-        
+        assertEquals(experienciaEsperada, elfo.getExperiencia());
+        assertEquals(flechasEsperadas, elfo.getFlechas());
     }
     
     @Test
     public void elfoAtiraFlechasCincoVezesNoMesmoOrc() {
         // Arrange
         Elfo elfo = new Elfo("Legolas", 4);
-        Orc orc = new Orc("Orc");
+        Orc orc = new Orc();
         // Act
         elfo.atirarFlecha(orc);
         elfo.atirarFlecha(orc);
@@ -179,5 +145,19 @@ public class ElfoTest
         String resultadoObtido = elfo.toString();
         // Assert
         assertEquals(resultadoEsperado, resultadoObtido);
-    }  
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
+
+
+
