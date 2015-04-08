@@ -193,6 +193,7 @@ public class Orc
          for ( ItemDoInventario item : this.itens ) {
              int i = this.itens.indexOf(item);
              if(item.getQuantidade() > maior) {
+                 maior = item.getQuantidade();
                  indexItem = i;
              }
          }
