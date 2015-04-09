@@ -189,15 +189,15 @@ public class Orc
     }
     
     public ItemDoInventario getItemComMaiorQuantidade() {
-         int maior = 0, indexItem = 0;
+         int maior = 0;
+         ItemDoInventario itemComMaiorQuantidade = null;
          for ( ItemDoInventario item : this.itens ) {
-             int i = this.itens.indexOf(item);
              if(item.getQuantidade() > maior) {
+                 itemComMaiorQuantidade = item;
                  maior = item.getQuantidade();
-                 indexItem = i;
              }
          }
          
-         return itens.get( indexItem );
+         return itemComMaiorQuantidade;
     }
 }
