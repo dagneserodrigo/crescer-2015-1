@@ -158,6 +158,9 @@ public class Orc
         itens.remove( itemParaRemover );
     }
     
+    /**
+     * Informa a descrição dos itens.
+     */
     public String getDescricoesItens() {
         StringBuilder builder = new StringBuilder();
         int numeroDeItens = this.itens.size();
@@ -175,6 +178,10 @@ public class Orc
         return builder.toString();
     }
     
+    
+    /**
+     * Soma 1000 a quantidade dos itens do Orc caso o número seja igual a 3481.
+     */
     public void tentarSorte() {
         int numeroDeItens = this.itens.size();
         
@@ -188,6 +195,10 @@ public class Orc
         }
     }
     
+    
+    /**
+     * Informa o item com maior quantidade.
+     */
     public ItemDoInventario getItemComMaiorQuantidade() {
          int maior = 0;
          ItemDoInventario itemComMaiorQuantidade = null;
