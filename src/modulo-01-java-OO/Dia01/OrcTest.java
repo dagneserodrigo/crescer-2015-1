@@ -386,12 +386,22 @@ public class OrcTest
     }
     
     @Test
-    public void getItemComMaiorQuantidade() {
+    public void getItemComMaiorQuantidadeSemItens() {
         // Arrange
         Orc sauron = new Orc("Sauron");
-        sauron.adicionarItem(new ItemDoInventario(1, "Lança"));
+        ItemDoInventario itemEsperado = null;
+        // Act
+        ItemDoInventario itemObtido = sauron.getItemComMaiorQuantidade();
+        // Assert
+        assertEquals(itemEsperado, itemObtido);
+    }
+    
+    @Test
+    public void getItemComMaiorQuantidadeComUmItem() {
+        // Arrange
+        Orc sauron = new Orc("Sauron");
         sauron.adicionarItem(new ItemDoInventario(5, "Escudo"));
-        ItemDoInventario itemEsperado = sauron.getItens().get(1);
+        ItemDoInventario itemEsperado = sauron.getItens().get(0);
         // Act
         ItemDoInventario itemObtido = sauron.getItemComMaiorQuantidade();
         // Assert
@@ -405,6 +415,20 @@ public class OrcTest
         sauron.adicionarItem(new ItemDoInventario(1, "Lança"));
         sauron.adicionarItem(new ItemDoInventario(1, "Escudo"));
         ItemDoInventario itemEsperado = sauron.getItens().get(0);
+        // Act
+        ItemDoInventario itemObtido = sauron.getItemComMaiorQuantidade();
+        // Assert
+        assertEquals(itemEsperado, itemObtido);
+    }
+    
+    @Test
+    public void getItemComMaiorQuantidadeComQuantidadesDiferentes() {
+        // Arrange
+        Orc sauron = new Orc("Sauron");
+        sauron.adicionarItem(new ItemDoInventario(34, "Lança"));
+        sauron.adicionarItem(new ItemDoInventario(10, "Escudo"));
+        sauron.adicionarItem(new ItemDoInventario(1000, "Pedras"));
+        ItemDoInventario itemEsperado = sauron.getItens().get(2);
         // Act
         ItemDoInventario itemObtido = sauron.getItemComMaiorQuantidade();
         // Assert
