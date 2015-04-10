@@ -4,12 +4,8 @@ import java.util.*;
  * 
  * @author CWI Software
  */
-public class Orc
+public class Orc extends Personagem
 {
-    private int experiencia, vida = 110;
-    private String nome;
-    private Status status = Status.VIVO;
-    private ArrayList<ItemDoInventario> itens = new ArrayList<ItemDoInventario>();
     private final int NUMERO_SORTE = 3481;
 
     {
@@ -22,10 +18,11 @@ public class Orc
     public Orc(String nome)
     {
         //vida = 110;
-        this.nome = nome;
+        super( nome, 110 );
     }
     
     public Orc() {
+        this("");
     }
     
     /**
@@ -58,32 +55,12 @@ public class Orc
 
     }
     
-    public String getNome() {
-        return this.nome;
-    }
-    
-    public int getExperiencia() {
-        return this.experiencia;
-    }
-    
-    public int getVida() {
-        return this.vida;
-    }
-    
-    public Status getStatus() {
-        return this.status;
-    }
-    
     public void setStatus(Status novoStatus) {
         this.status = novoStatus;
     }
     
     public void setExperiencia(int experiencia) {
         this.experiencia = experiencia;
-    }
-    
-    public ArrayList<ItemDoInventario> getItens() {
-        return itens;
     }
     
     /**
@@ -140,46 +117,6 @@ public class Orc
     }
     
     /**
-     * Adiciona item ao Orc.
-     * 
-     * @param novoItem Item a ser adicionado ao Orc;
-     */
-    public void adicionarItem( ItemDoInventario novoItem ) {
-       this.itens.add( novoItem );
-    }
-    
-    
-    /**
-     * Remove item do Orc.
-     * 
-     * @param itemParaRemover Item a ser removido do Orc;
-     */
-    public void perderItem( ItemDoInventario itemParaRemover) {
-        itens.remove( itemParaRemover );
-    }
-    
-    /**
-     * Informa a descrição dos itens.
-     */
-    public String getDescricoesItens() {
-        StringBuilder builder = new StringBuilder();
-        int numeroDeItens = this.itens.size();
-        
-        for (int i = 0; i < numeroDeItens; i++) {
-            boolean ultimoIndice = i == numeroDeItens -1;
-
-            builder.append(
-                ultimoIndice ? 
-                itens.get(i).toString() :
-                itens.get(i).toString() + ", "
-            );
-        }
-        
-        return builder.toString();
-    }
-    
-    
-    /**
      * Soma 1000 a quantidade dos itens do Orc caso o número seja igual a 3481.
      */
     public void tentarSorte() {
@@ -192,36 +129,6 @@ public class Orc
                 int novaQuantidade = itens.get(i).getQuantidade() + 1000;
                 itens.get(i).setQuantidade( novaQuantidade );
             }
-        }
-    }
-    
-    
-    /**
-     * Informa o item com maior quantidade.
-     */
-    public ItemDoInventario getItemComMaiorQuantidade() {
-         int maior = 0;
-         ItemDoInventario itemComMaiorQuantidade = null;
-         for ( ItemDoInventario item : this.itens ) {
-             if(item.getQuantidade() > maior) {
-                 itemComMaiorQuantidade = item;
-                 maior = item.getQuantidade();
-             }
-         }
-         
-         return itemComMaiorQuantidade;
-    }
-    
-    public void ordernarItens() {
-        int tamanho = this.itens.size();
-        for (int i = 0; i < tamanho - 1; i++) {
-          for (int j = 0; j < tamanho - 1; j++) {
-            if (this.itens.get(j).getQuantidade() > this.itens.get( j + 1).getQuantidade()) {
-              ItemDoInventario aux = itens.get(j);
-              itens.set(j, this.itens.get(j + 1));
-              itens.set(j+1, aux);
-            }
-          }
         }
     }
 }

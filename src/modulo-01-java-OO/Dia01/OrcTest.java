@@ -441,7 +441,7 @@ public class OrcTest
         Orc orc = new Orc();
         String resultadoEsperado = "";
         // Act
-        orc.ordernarItens();
+        orc.ordenarItens();
         // Assert
         assertEquals(resultadoEsperado, orc.getDescricoesItens());
         
@@ -457,7 +457,7 @@ public class OrcTest
         ArrayList<ItemDoInventario> itensEsperados = new ArrayList<>();
         itensEsperados.add( adaga );
         // Act
-        orc.ordernarItens();
+        orc.ordenarItens();
         // Assert
         assertEquals(itensEsperados, orc.getItens());
         
@@ -474,7 +474,7 @@ public class OrcTest
         
         String itensEsperados = "primeiro, segundo";
         // Act
-        orc.ordernarItens();
+        orc.ordenarItens();
         // Assert
         assertEquals(itensEsperados, orc.getDescricoesItens());
         
@@ -493,7 +493,7 @@ public class OrcTest
         
         String itensEsperados = "primeiro, segundo, terceiro";
         // Act
-        orc.ordernarItens();
+        orc.ordenarItens();
         // Assert
         assertEquals(itensEsperados, orc.getDescricoesItens());
         
