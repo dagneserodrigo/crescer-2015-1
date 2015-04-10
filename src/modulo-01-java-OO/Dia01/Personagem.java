@@ -75,6 +75,10 @@ public class Personagem
         /*
          * Utilizando for tradicional         
         int numeroDeItens = this.itens.size();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7b5626fe4abbf13c8ba628d38fdf80f4e3bad803
         for (int i = 0; i < numeroDeItens; i++) {
             ItemDoInventario itemAtual = this.itens.get(i);
             
@@ -116,6 +120,10 @@ public class Personagem
       * WHILE (ENQUANTO)
       int i = 0;
       int numeroDeItens = this.itens.size();    
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7b5626fe4abbf13c8ba628d38fdf80f4e3bad803
       while (i < numeroDeItens) {
           ItemDoInventario itemAtual = this.itens.get(i);
           boolean éÚltimoÍndice = i == numeroDeItens - 1;
@@ -211,4 +219,6 @@ public class Personagem
         // this.itens.sort_by { |x| x.get_quantidade }
         
     }
+
 }
+

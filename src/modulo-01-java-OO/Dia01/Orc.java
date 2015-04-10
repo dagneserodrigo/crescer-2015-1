@@ -1,4 +1,5 @@
 import java.util.*;
+
 /**
  * Define objetos do tipo Orc
  * 
@@ -72,7 +73,23 @@ public class Orc extends Personagem
      */
     public String toString() {
         return "Vida atual: " + this.vida;
-    }
+    } 
+    
+    /**
+     * Caso o Orc tenha sorte, adiciona 1000 quantidades para cada item do inventário.
+     */
+    public void tentarSorte() {
+        
+        double numeroGerado = gerarNumero();
+        
+        if (numeroGerado == NUMERO_SORTE) {
+            for (ItemDoInventario item : this.itens) {
+                int novaQuantidadeItem = item.getQuantidade() + 1000;
+                item.setQuantidade(novaQuantidadeItem);
+            }
+        }
+        
+    }  
     
     private double gerarNumero() {
         
@@ -114,21 +131,5 @@ public class Orc extends Personagem
         }
                 
         return numeroGerado;
-    }
-    
-    /**
-     * Soma 1000 a quantidade dos itens do Orc caso o número seja igual a 3481.
-     */
-    public void tentarSorte() {
-        int numeroDeItens = this.itens.size();
-        
-        double numero = this.gerarNumero();
-        
-        if ( numero == NUMERO_SORTE ) {
-            for (int i = 0; i < numeroDeItens; i++) {
-                int novaQuantidade = itens.get(i).getQuantidade() + 1000;
-                itens.get(i).setQuantidade( novaQuantidade );
-            }
-        }
     }
 }
