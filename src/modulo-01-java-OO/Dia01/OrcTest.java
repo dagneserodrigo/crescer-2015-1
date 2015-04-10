@@ -434,6 +434,70 @@ public class OrcTest
         // Assert
         assertEquals(itemEsperado, itemObtido);
     }
+    
+    @Test
+    public void ordenaItensSemItens() {
+        // Arrange
+        Orc orc = new Orc();
+        String resultadoEsperado = "";
+        // Act
+        orc.ordernarItens();
+        // Assert
+        assertEquals(resultadoEsperado, orc.getDescricoesItens());
+        
+    }
+    
+    @Test
+    public void ordenaItensComUmItem() {
+        // Arrange
+        ItemDoInventario adaga = new ItemDoInventario( 20, "espada" );
+        Orc orc = new Orc();
+        orc.adicionarItem( adaga );
+        
+        ArrayList<ItemDoInventario> itensEsperados = new ArrayList<>();
+        itensEsperados.add( adaga );
+        // Act
+        orc.ordernarItens();
+        // Assert
+        assertEquals(itensEsperados, orc.getItens());
+        
+    }
+    
+    @Test
+    public void ordenaItensComDoisItens() {
+        // Arrange
+        ItemDoInventario segundo = new ItemDoInventario( 20, "segundo" );
+        ItemDoInventario primeiro = new ItemDoInventario( 4, "primeiro" );
+        Orc orc = new Orc();
+        orc.adicionarItem( segundo );
+        orc.adicionarItem( primeiro );
+        
+        String itensEsperados = "primeiro, segundo";
+        // Act
+        orc.ordernarItens();
+        // Assert
+        assertEquals(itensEsperados, orc.getDescricoesItens());
+        
+    }
+    
+    @Test
+    public void ordenaItensComTresItensSendoUmNegativo() {
+        // Arrange
+        ItemDoInventario terceiro = new ItemDoInventario( 20, "terceiro" );
+        ItemDoInventario segundo = new ItemDoInventario( 4, "segundo" );
+        ItemDoInventario primeiro = new ItemDoInventario( -5, "primeiro" );
+        Orc orc = new Orc();
+        orc.adicionarItem( terceiro );
+        orc.adicionarItem( segundo );
+        orc.adicionarItem( primeiro );
+        
+        String itensEsperados = "primeiro, segundo, terceiro";
+        // Act
+        orc.ordernarItens();
+        // Assert
+        assertEquals(itensEsperados, orc.getDescricoesItens());
+        
+    }
 }
 
 

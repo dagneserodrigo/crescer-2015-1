@@ -211,4 +211,17 @@ public class Orc
          
          return itemComMaiorQuantidade;
     }
+    
+    public void ordernarItens() {
+        int tamanho = this.itens.size();
+        for (int i = 0; i < tamanho - 1; i++) {
+          for (int j = 0; j < tamanho - 1; j++) {
+            if (this.itens.get(j).getQuantidade() > this.itens.get( j + 1).getQuantidade()) {
+              ItemDoInventario aux = itens.get(j);
+              itens.set(j, this.itens.get(j + 1));
+              itens.set(j+1, aux);
+            }
+          }
+        }
+    }
 }
