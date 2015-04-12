@@ -189,8 +189,12 @@ public class Personagem
      * Algoritmo atual: Bubblesort
      */
     protected void ordenarItens() {
+        // Versão mais estável do Bubblesort - Melhor caso O(n), Pior caso O(n^2)
+        // iniciamos com true para forçar a entrada no laço.. poderia ter sido feito com do-while também
+        boolean posicoesSendoTrocadas = true;
         
-        /*for (int i = 0; i < this.itens.size(); i++) {
+        while (posicoesSendoTrocadas) {
+            posicoesSendoTrocadas = false;
             for (int j = 0; j < this.itens.size() - 1; j++) {
                 ItemDoInventario itemAtual = this.itens.get(j);
                 ItemDoInventario proximo = this.itens.get(j + 1);
@@ -201,24 +205,41 @@ public class Personagem
                 if (precisaTrocar) {
                     this.itens.set(j, proximo);
                     this.itens.set(j + 1, itemAtual);
+                    posicoesSendoTrocadas = true;
                 }
             }
+        }
+        
+        /*
+        
+        // Versão mais simples porém mais instável do BubbleSort - sempre O(n^2)
+        int numeroItens = this.itens.size();
+        
+        for (int i = 0; i < numeroItens; i++) {
+                   @@ -199,9 +223,9 @@ protected void ordenarItens() {
+                   this.itens.set(j + 1, itemAtual);
+                }
+            }
+        }
         }*/
         
-        Collections.sort(this.itens, new Comparator<ItemDoInventario>() {
+        // Java:
+        // Java - MergeSort - O(n logn)
+        /*Collections.sort(this.itens, new Comparator<ItemDoInventario>() {
             public int compare(ItemDoInventario item, ItemDoInventario outroItem) {
                 return Integer.compare(item.getQuantidade(), outroItem.getQuantidade());
-            }
-        });
-        
+                @@ -209,10 +233,10 @@ public int compare(ItemDoInventario item, ItemDoInventario outroItem) {
+        });*/
+       
         
         // C#:
-        // return this.itens.OrderBy(x => x.getQuantidade());
+        // C# - MergeSort - O(n logn)
+        // return this.itens.OrderBy(x => x.Quantidade);
         
         // Ruby:
-        // this.itens.sort_by { |x| x.get_quantidade }
+        // Ruby - QuickSort - O (n logn) em média, porém pior caso O(n^2)
+        // itens.sort_by { |x| x.quantidade }
         
     }
-
 }
 
