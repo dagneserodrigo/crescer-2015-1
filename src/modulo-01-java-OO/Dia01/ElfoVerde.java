@@ -7,32 +7,17 @@ import java.util.*;
  */
 public class ElfoVerde extends Elfo
 {
-    private int flechas;
-
-    // type initializer
-    {
-        flechas = 42;
-    }
-    
-    /**
-     * Cria objetos ElfoVerde
-     * 
-     * @param umNome Nome que o elfo verde receberá
-     * @param flechas Quantidade inicial de flechas
-     */
-    public ElfoVerde(String umNome, int flechas) {
-        this(umNome);
-        // this.nome = nome;
-        this.flechas = flechas;
-    }
-    
     /**
      * Cria um elfo verde informando nome.
      * 
      * @param nome Nome a ser dado para o Elfo.
      */
+    public ElfoVerde( String nome, int flechas ){
+        super( nome, flechas );
+    }
+
     public ElfoVerde(String nome) {
-        super( nome, 0);
+        super( nome);
     }
 
     /**
@@ -41,9 +26,8 @@ public class ElfoVerde extends Elfo
      * @param umOrc Orc que receberá uma flechada.
      */
     public void atirarFlecha(Orc umOrc) {
-        flechas--;
-        experiencia += 2;
-        umOrc.recebeAtaque();
+        super.atirarFlecha(umOrc);
+        experiencia++;
     }
     
     /**
