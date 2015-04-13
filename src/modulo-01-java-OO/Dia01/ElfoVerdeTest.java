@@ -14,6 +14,34 @@ import org.junit.Test;
 public class ElfoVerdeTest
 {
     @Test
+    public void atiraUmaFlechaEGanhaDoisDeExperiencia() {
+        // Arrange
+        ElfoVerde legolas = new ElfoVerde("Legolas");
+        int flechasEsperadas = 41;
+        int experienciaEsperada = 2;
+        // Act
+        legolas.atirarFlecha( new Orc("Sauron") );
+        // Assert
+        assertEquals(flechasEsperadas, legolas.getFlechas());
+        assertEquals(experienciaEsperada, legolas.getExperiencia());
+    }
+
+    @Test
+    public void atiraDuasFlechaEGanhaDoisDeExperiencia() {
+        // Arrange
+        ElfoVerde legolas = new ElfoVerde("Legolas");
+        Orc sauron = new Orc("Sauron");
+        int flechasEsperadas = 40;
+        int experienciaEsperada = 4;
+        // Act
+        legolas.atirarFlecha( sauron );
+        legolas.atirarFlecha( sauron );
+        // Assert
+        assertEquals(flechasEsperadas, legolas.getFlechas());
+        assertEquals(experienciaEsperada, legolas.getExperiencia());
+    }
+
+    @Test
     public void recebeUmItemValido() {
         // Arrange
         ElfoVerde legolas = new ElfoVerde("Legolas");
