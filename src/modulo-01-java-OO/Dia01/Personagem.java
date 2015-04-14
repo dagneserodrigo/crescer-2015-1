@@ -241,5 +241,9 @@ public class Personagem
         // itens.sort_by { |x| x.quantidade }
         
     }
+    
+    public void atualizaStatusParaMorto() {
+        this.status = Status.MORTO;
+    }
 }
 
