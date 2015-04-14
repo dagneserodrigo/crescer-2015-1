@@ -40,4 +40,8 @@ public class ElfoVerde extends Elfo
         if (itemAtribuido.equals("espada de aço valiriano" )|| itemAtribuido.equals("arco e flecha de vidro"))
             this.itens.add(item);
     }
+    
+    public String toString() {
+        return "Elfo Verde: " + super.toString();
+    }
 }

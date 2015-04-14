@@ -13,19 +13,21 @@ import org.junit.Test;
  */
 public class ElfoNoturnoTest
 {
+    private final double DELTA = 0.005;
+    
     @Test
     public void atiraUmaFlechaEGanhaTresDeExperiencia() {
         // Arrange
         ElfoNoturno legolas = new ElfoNoturno("Legolas");
         int flechasEsperadas = 41;
         int experienciaEsperada = 3;
-        int vidaEsperada = 95;
+        double vidaEsperada = 95;
         // Act
         legolas.atirarFlecha(new Orc("Sauron"));
         // Assert
         assertEquals(flechasEsperadas, legolas.getFlechas());
         assertEquals(experienciaEsperada, legolas.getExperiencia());
-        assertEquals(vidaEsperada, legolas.getVida());
+        assertEquals(vidaEsperada, legolas.getVida(), DELTA);
     }
     
     @Test
@@ -35,14 +37,14 @@ public class ElfoNoturnoTest
         Orc sauron = new Orc("Sauron");
         int flechasEsperadas = 40;
         int experienciaEsperada = 6;
-        int vidaEsperada = 90;
+        double vidaEsperada = 90.25;
         // Act
         legolas.atirarFlecha( sauron );
         legolas.atirarFlecha( sauron );
         // Assert
         assertEquals(flechasEsperadas, legolas.getFlechas());
         assertEquals(experienciaEsperada, legolas.getExperiencia());
-        assertEquals(vidaEsperada, legolas.getVida());
+        assertEquals(vidaEsperada, legolas.getVida(), DELTA);
     }
     
     @Test
@@ -52,7 +54,7 @@ public class ElfoNoturnoTest
         Orc sauron = new Orc("Sauron");
         int flechasEsperadas = 37;
         int experienciaEsperada = 15;
-        int vidaEsperada = 76;
+        double vidaEsperada = 77.3780;
         // Act
         legolas.atirarFlecha( sauron );
         legolas.atirarFlecha( sauron );
@@ -62,17 +64,17 @@ public class ElfoNoturnoTest
         // Assert
         assertEquals(flechasEsperadas, legolas.getFlechas());
         assertEquals(experienciaEsperada, legolas.getExperiencia());
-        assertEquals(vidaEsperada, legolas.getVida());
+        assertEquals(vidaEsperada, legolas.getVida(), DELTA);
     }
     
     @Test
-    public void atiraFlechasAtéOElfoMorrer() {
+    public void atiraFlechasAteElfoMorrer() {
         // Arrange
         ElfoNoturno legolas = new ElfoNoturno("Legolas");
         Orc sauron = new Orc("Sauron");
         Status statusEsperado = Status.MORTO;
         // Act
-        for(int i = 0; i < 45; i++) {
+        for(int i = 0; i < 100; i++) {
             legolas.atirarFlecha( sauron );
         }
         // Assert
