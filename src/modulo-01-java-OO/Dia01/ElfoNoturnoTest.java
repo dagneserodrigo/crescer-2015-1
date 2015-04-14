@@ -35,7 +35,7 @@ public class ElfoNoturnoTest
         Orc sauron = new Orc("Sauron");
         int flechasEsperadas = 40;
         int experienciaEsperada = 6;
-        int vidaEsperada = 91;
+        int vidaEsperada = 90;
         // Act
         legolas.atirarFlecha( sauron );
         legolas.atirarFlecha( sauron );
@@ -52,7 +52,7 @@ public class ElfoNoturnoTest
         Orc sauron = new Orc("Sauron");
         int flechasEsperadas = 37;
         int experienciaEsperada = 15;
-        int vidaEsperada = 79;
+        int vidaEsperada = 76;
         // Act
         legolas.atirarFlecha( sauron );
         legolas.atirarFlecha( sauron );
@@ -63,5 +63,19 @@ public class ElfoNoturnoTest
         assertEquals(flechasEsperadas, legolas.getFlechas());
         assertEquals(experienciaEsperada, legolas.getExperiencia());
         assertEquals(vidaEsperada, legolas.getVida());
+    }
+    
+    @Test
+    public void atiraFlechasAtéOElfoMorrer() {
+        // Arrange
+        ElfoNoturno legolas = new ElfoNoturno("Legolas");
+        Orc sauron = new Orc("Sauron");
+        Status statusEsperado = Status.MORTO;
+        // Act
+        for(int i = 0; i < 45; i++) {
+            legolas.atirarFlecha( sauron );
+        }
+        // Assert
+        assertEquals(statusEsperado, legolas.getStatus());
     }
 }
