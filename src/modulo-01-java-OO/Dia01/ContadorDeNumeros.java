@@ -5,6 +5,16 @@
  */
 public class ContadorDeNumeros
 {
+    public static void contarAte5() {
+        // this.x = 10 não funciona porque this é objeto.
+        // ContadorDeNumeros.x = 10
+        // x = 10
+        for (int i = 0; i < 5; i++) {
+            // execute tudo que tem aqui dentro
+            System.out.println(i + 1);
+        }
+    }
+    
     public void contarAte3() {
         
         for (int i = 0; i < 3; i++) {
