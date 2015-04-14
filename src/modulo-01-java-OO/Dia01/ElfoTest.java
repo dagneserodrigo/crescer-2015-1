@@ -147,16 +147,44 @@ public class ElfoTest
         assertEquals(resultadoEsperado, resultadoObtido);
     }
     
+    @Test
+    public void contadorDeElfosSemElfos() {
+        // Arrrange
+        int resultadoEsperado = 0;
+        // Act
+        int resultadoObtido = Elfo.getQuantidadeDeElfos();
+        // Assert
+        assertEquals(resultadoEsperado, resultadoObtido);
+    }
     
+    @Test
+    public void elfoNasceEIncrementaContadorDeElfos() {
+        // Arrrange
+        Elfo legolas = new Elfo("Legolas");
+        int resultadoEsperado = 1;
+        // Act
+        int resultadoObtido = Elfo.getQuantidadeDeElfos();
+        // Assert
+        assertEquals(resultadoEsperado, resultadoObtido);
+    }
     
+    @Test
+    public void nasceTresElfosEIncrementaContadorDeElfos() {
+        // Arrrange
+        Elfo legolas = new Elfo("Legolas");
+        Elfo celeborn = new Elfo("Celeborn");
+        Elfo robinhood = new Elfo("Robin Hood");
+        int resultadoEsperado = 3;
+        // Act
+        int resultadoObtido = Elfo.getQuantidadeDeElfos();
+        // Assert
+        assertEquals(resultadoEsperado, resultadoObtido);
+    }
     
-    
-    
-    
-    
-    
-    
-    
+    @Before
+    public void setUp() {
+        Elfo.resetaQuantidadeDeElfos();
+    }
 }
 
 
