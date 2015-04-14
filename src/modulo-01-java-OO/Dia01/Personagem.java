@@ -12,7 +12,7 @@ import java.util.*;
 public class Personagem
 {
     protected Status status = Status.VIVO;
-    protected int vida;
+    protected double vida;
     protected String nome;
     protected int experiencia;
     protected ArrayList<ItemDoInventario> itens = new ArrayList<ItemDoInventario>();
@@ -26,7 +26,7 @@ public class Personagem
         return status;
     }
     
-    protected int getVida() {
+    protected double getVida() {
         return vida;
     }
     
@@ -240,10 +240,6 @@ public class Personagem
         // Ruby - QuickSort - O (n logn) em média, porém pior caso O(n^2)
         // itens.sort_by { |x| x.quantidade }
         
-    }
-    
-    public void atualizaStatusParaMorto() {
-        this.status = Status.MORTO;
     }
 }
 
