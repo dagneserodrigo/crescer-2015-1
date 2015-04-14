@@ -28,11 +28,12 @@ public class ElfoNoturno extends Elfo
     public void atirarFlecha(Orc umOrc) {
         super.atirarFlecha( umOrc );
         experiencia += 2;
-        double vidaAPerder = vida * 0.05;
-        vida = (int)(vida - vidaAPerder);
+        vida -= vida * 0.05;
         
-        if( vida <= 0 ) {
-            atualizaStatusParaMorto();
-        }
+        this.status = (int)this.vida == 0 ? Status.MORTO : this.status;
+    }
+    
+    public String toString() {
+        return "Elfo Noturno: " + super.toString();
     }
 }
