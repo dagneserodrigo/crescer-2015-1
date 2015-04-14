@@ -7,11 +7,13 @@
 public class Elfo extends Personagem
 {
     private int flechas;
+    private static int quantidadeElfos;
 
     // type initializer
     {
         flechas = 42;
         vida = 100;
+        quantidadeElfos++;
     }
     
     /**
@@ -120,5 +122,17 @@ public class Elfo extends Personagem
         builder.append(" ");
         builder.append(textoNiveis);
         builder.append(" de experiência.");*/
+    }
+
+    public static void contaNascimentoElfo() {
+        quantidadeElfos++;
+    }
+    
+    public static int getQuantidadeDeElfos() {
+        return quantidadeElfos;
+    }
+    
+    public static void resetaQuantidadeDeElfos() {
+        quantidadeElfos = 0;
     }
 }
