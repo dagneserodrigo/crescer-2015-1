@@ -135,4 +135,16 @@ public class Elfo extends Personagem
     public static void resetaQuantidadeDeElfos() {
         quantidadeElfos = 0;
     }
+    
+    /**
+     * Verifica se dois Elfos são iguais.
+     * 
+     * Critério atual: ter o mesmo nome.
+     * @param outro Elfo a ser comparado.
+     * @return boolean Verdadeiro caso sejam iguais. False caso sejam diferentes.
+     */
+    @Override
+    public boolean equals(Object outro) {
+        return ((Elfo)outro).getNome().equals(this.nome);
+    }
 }
