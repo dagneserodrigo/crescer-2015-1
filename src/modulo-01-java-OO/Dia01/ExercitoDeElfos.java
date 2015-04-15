@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.*;
 /**
  * Cria exército de Elfos
  * 
@@ -30,4 +30,15 @@ public class ExercitoDeElfos
     public Elfo buscarElfo( String nome ) {
         return exercitoDeElfos.get(nome);
     }
+    
+    public ArrayList<Elfo> buscaElfoPeloStatus(Status status) {
+        ArrayList<Elfo> elfosComMesmoStatus = new ArrayList<>();
+        for (Elfo elfoAtual : exercitoDeElfos.values()) {
+            if(elfoAtual.getStatus().equals(status)) {
+                elfosComMesmoStatus.add(elfoAtual);
+            }
+        }
+        return elfosComMesmoStatus;    
+    }
+        
 }

@@ -2,7 +2,8 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.HashMap;
+import java.util.*;
+
 
 public class ExercitoDeElfosTest
 {
@@ -141,5 +142,69 @@ public class ExercitoDeElfosTest
         Elfo obtido = exercito.buscarElfo(nomeElfo);
         // Assert
         assertEquals(esperado, obtido);
+    }
+    
+    @Test
+    public void buscaElfosPorStatusSemElfos() {
+        // Arrange
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        ArrayList<Elfo> resultadoEsperado = new ArrayList<>();
+        // Act
+        // Assert
+        assertEquals( resultadoEsperado, exercito.buscaElfoPeloStatus( Status.VIVO ));
+    }
+    
+    @Test
+    public void buscaElfosPorStatusComUmElfo() {
+        // Arrange
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        Elfo legolas = new ElfoNoturno("Celeborn");
+        ArrayList<Elfo> resultadoEsperado = new ArrayList<>();
+        resultadoEsperado.add(legolas);
+        // Act
+        exercito.alistarElfo(legolas);
+        // Assert
+        assertEquals( resultadoEsperado, exercito.buscaElfoPeloStatus( Status.VIVO ));
+    }
+    
+    @Test
+    public void buscaElfosPorStatusComDoisElfos() {
+        // Arrange
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        Elfo legolas = new ElfoNoturno("Legolas");
+        Elfo celeborn = new ElfoVerde("Celeborn");
+        ArrayList<Elfo> resultadoEsperado = new ArrayList<>();
+        resultadoEsperado.add(celeborn);
+        resultadoEsperado.add(legolas);
+        // Act
+        exercito.alistarElfo(legolas);
+        exercito.alistarElfo(celeborn);
+        // Assert
+        assertEquals( resultadoEsperado, exercito.buscaElfoPeloStatus( Status.VIVO ));
+    }
+    
+    @Test
+    public void buscaElfosPorStatusComVariosElfos() {
+        // Arrange
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        Elfo legolas = new ElfoNoturno("Legolas");
+        Elfo celeborn = new ElfoVerde("Celeborn");
+        Elfo dimitri = new ElfoNoturno("Dimitri");
+        Elfo robinHood = new ElfoVerde("Robin Hood");
+        Elfo elround = new ElfoNoturno("Elrond");
+        ArrayList<Elfo> resultadoEsperado = new ArrayList<>();
+        resultadoEsperado.add(celeborn);
+        resultadoEsperado.add(dimitri);
+        resultadoEsperado.add(robinHood);
+        resultadoEsperado.add(legolas);
+        resultadoEsperado.add(elround);
+        // Act
+        exercito.alistarElfo(legolas);
+        exercito.alistarElfo(celeborn);
+        exercito.alistarElfo(dimitri);
+        exercito.alistarElfo(robinHood);
+        exercito.alistarElfo(elround);
+        // Assert
+        assertEquals( resultadoEsperado, exercito.buscaElfoPeloStatus( Status.VIVO ));
     }
 }
