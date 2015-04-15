@@ -148,7 +148,7 @@ public class ExercitoDeElfosTest
     public void buscaElfosPorStatusSemElfos() {
         // Arrange
         ExercitoDeElfos exercito = new ExercitoDeElfos();
-        ArrayList<Elfo> resultadoEsperado = new ArrayList<>();
+        HashMap<String, Elfo> resultadoEsperado = new HashMap<>();
         // Act
         // Assert
         assertEquals( resultadoEsperado, exercito.buscaElfoPeloStatus( Status.VIVO ));
@@ -159,8 +159,8 @@ public class ExercitoDeElfosTest
         // Arrange
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo legolas = new ElfoNoturno("Celeborn");
-        ArrayList<Elfo> resultadoEsperado = new ArrayList<>();
-        resultadoEsperado.add(legolas);
+        HashMap<String, Elfo> resultadoEsperado = new HashMap<>();
+        resultadoEsperado.put(legolas.getNome(), legolas);
         // Act
         exercito.alistarElfo(legolas);
         // Assert
@@ -173,12 +173,12 @@ public class ExercitoDeElfosTest
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         Elfo legolas = new ElfoNoturno("Legolas");
         Elfo celeborn = new ElfoVerde("Celeborn");
-        ArrayList<Elfo> resultadoEsperado = new ArrayList<>();
-        resultadoEsperado.add(celeborn);
-        resultadoEsperado.add(legolas);
+        HashMap<String, Elfo> resultadoEsperado = new HashMap<>();
+        resultadoEsperado.put(celeborn.getNome(), celeborn);
+        resultadoEsperado.put(legolas.getNome(), legolas);
         // Act
-        exercito.alistarElfo(legolas);
         exercito.alistarElfo(celeborn);
+        exercito.alistarElfo(legolas);
         // Assert
         assertEquals( resultadoEsperado, exercito.buscaElfoPeloStatus( Status.VIVO ));
     }
@@ -192,12 +192,37 @@ public class ExercitoDeElfosTest
         Elfo dimitri = new ElfoNoturno("Dimitri");
         Elfo robinHood = new ElfoVerde("Robin Hood");
         Elfo elround = new ElfoNoturno("Elrond");
-        ArrayList<Elfo> resultadoEsperado = new ArrayList<>();
-        resultadoEsperado.add(celeborn);
-        resultadoEsperado.add(dimitri);
-        resultadoEsperado.add(robinHood);
-        resultadoEsperado.add(legolas);
-        resultadoEsperado.add(elround);
+        HashMap<String, Elfo> resultadoEsperado = new HashMap<>();
+        resultadoEsperado.put(legolas.getNome(), legolas);
+        resultadoEsperado.put(celeborn.getNome(), celeborn);
+        resultadoEsperado.put(dimitri.getNome(), dimitri);
+        resultadoEsperado.put(robinHood.getNome(), robinHood);
+        resultadoEsperado.put(elround.getNome(), elround);
+        // Act
+        exercito.alistarElfo(legolas);
+        exercito.alistarElfo(celeborn);
+        exercito.alistarElfo(dimitri);
+        exercito.alistarElfo(robinHood);
+        exercito.alistarElfo(elround);
+        // Assert
+        assertEquals( resultadoEsperado, exercito.buscaElfoPeloStatus( Status.VIVO ));
+    }
+    
+    @Test
+    public void buscaElfosPorStatusComVariosElfosEConflito() {
+        // Arrange
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        Elfo legolas = new ElfoNoturno("Aa");
+        Elfo celeborn = new ElfoVerde("Bb");
+        Elfo dimitri = new ElfoNoturno("Dimitri");
+        Elfo robinHood = new ElfoVerde("Robin Hood");
+        Elfo elround = new ElfoNoturno("Elrond");
+        HashMap<String, Elfo> resultadoEsperado = new HashMap<>();
+        resultadoEsperado.put(legolas.getNome(), legolas);
+        resultadoEsperado.put(celeborn.getNome(), celeborn);
+        resultadoEsperado.put(dimitri.getNome(), dimitri);
+        resultadoEsperado.put(robinHood.getNome(), robinHood);
+        resultadoEsperado.put(elround.getNome(), elround);
         // Act
         exercito.alistarElfo(legolas);
         exercito.alistarElfo(celeborn);

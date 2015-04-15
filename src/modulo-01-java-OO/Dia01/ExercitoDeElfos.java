@@ -31,14 +31,21 @@ public class ExercitoDeElfos
         return exercitoDeElfos.get(nome);
     }
     
-    public ArrayList<Elfo> buscaElfoPeloStatus(Status status) {
-        ArrayList<Elfo> elfosComMesmoStatus = new ArrayList<>();
+    public HashMap<String, Elfo> buscaElfoPeloStatus( Status status ) {
+        HashMap<String, Elfo> elfosComMesmoStatus = new HashMap<>();
+        
+        for ( Elfo elfoAtual : exercitoDeElfos.values() ) {
+           if( elfoAtual.getStatus().equals( status ) ){
+               elfosComMesmoStatus.put( elfoAtual.getNome(), elfoAtual );
+           }
+        }
+        /*ArrayList<Elfo> elfosComMesmoStatus = new ArrayList<>();
         for (Elfo elfoAtual : exercitoDeElfos.values()) {
             if(elfoAtual.getStatus().equals(status)) {
                 elfosComMesmoStatus.add(elfoAtual);
             }
-        }
-        return elfosComMesmoStatus;    
+        }*/
+        return elfosComMesmoStatus;
     }
         
 }
