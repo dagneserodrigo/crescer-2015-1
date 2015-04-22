@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.*;
 
-
 public class ExercitoDeElfosTest
 {
     @Test
@@ -16,11 +15,11 @@ public class ExercitoDeElfosTest
         // Act
         try {
             exercito.alistarElfo(elfo);
-        } catch ( NaoPodeAlistarException  error) {
+        } catch (NaoPodeAlistarException error) {
             System.out.println(error);
         }
         finally {
-            System.out.println("Terceiro componente do gato seco. Será sempre executado");
+            System.out.println("Finalmente último dia de bluej!!!!");
         }
         // Assert
         HashMap<String, Elfo> obtido = exercito.getExercito();
@@ -38,14 +37,14 @@ public class ExercitoDeElfosTest
         try {
             exercito.alistarElfo(elfo);
             exercito.alistarElfo(elfo2);
-        } catch ( NaoPodeAlistarException error ) {
-            System.out.println(error);
+        } catch (NaoPodeAlistarException erro) {
+            System.out.println(erro);
         }
         // Assert
         HashMap<String, Elfo> obtido = exercito.getExercito();
         assertEquals(exercitoEsperado, obtido);
     }
-
+    
     @Test
     public void alistarElfoVerdeAlista() {
         // Arrange
@@ -56,8 +55,8 @@ public class ExercitoDeElfosTest
         // Act
         try {
             exercito.alistarElfo(elfo);
-        } catch ( NaoPodeAlistarException error ){
-            System.out.println(error);
+        } catch (NaoPodeAlistarException erro) {
+            System.out.println(erro);
         }
         // Assert
         HashMap<String, Elfo> obtido = exercito.getExercito();
@@ -74,8 +73,8 @@ public class ExercitoDeElfosTest
         // Act
         try {
             exercito.alistarElfo(elfo);
-        } catch ( NaoPodeAlistarException error ) {
-            System.out.println(error);
+        } catch (NaoPodeAlistarException erro) {
+            System.out.println(erro);
         }
         // Assert
         HashMap<String, Elfo> obtido = exercito.getExercito();
@@ -98,8 +97,8 @@ public class ExercitoDeElfosTest
             exercito.alistarElfo(elfo);
             exercito.alistarElfo(elfo2);
             exercito.alistarElfo(elfo3);
-        } catch ( NaoPodeAlistarException error ) {
-            System.out.println(error);
+        } catch (NaoPodeAlistarException erro) {
+            System.out.println(erro);
         }
         // Assert
         HashMap<String, Elfo> obtido = exercito.getExercito();
@@ -121,11 +120,15 @@ public class ExercitoDeElfosTest
         // Act
         try {
             exercito.alistarElfo(elfoBase);
+        } catch (NaoPodeAlistarException erro) {
+            System.out.println(erro);
+        }
+        try {
             exercito.alistarElfo(elfo);
             exercito.alistarElfo(elfo2);
-            exercito.alistarElfo(elfo3);
-        } catch ( NaoPodeAlistarException error ) {
-            System.out.println(error);
+            exercito.alistarElfo(elfo3);   
+        } catch (NaoPodeAlistarException erro) {
+            System.out.println(erro);
         }
         // Assert
         HashMap<String, Elfo> obtido = exercito.getExercito();
@@ -151,8 +154,8 @@ public class ExercitoDeElfosTest
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         try {
             exercito.alistarElfo(esperado);
-        } catch ( NaoPodeAlistarException error ) {
-            System.out.println(error);
+        } catch (NaoPodeAlistarException erro) {
+            System.out.println(erro);
         }
         // Act
         Elfo obtido = exercito.buscarElfo(nomeElfo);
@@ -170,8 +173,8 @@ public class ExercitoDeElfosTest
             exercito.alistarElfo(esperado);
             exercito.alistarElfo(new ElfoVerde("green elf"));
             exercito.alistarElfo(new ElfoNoturno("Night Elf"));
-        } catch ( NaoPodeAlistarException error) {
-            System.out.println(error);
+        } catch (NaoPodeAlistarException erro) {
+            System.out.println(erro);
         }
         // Act
         Elfo obtido = exercito.buscarElfo(nomeElfo);
@@ -180,108 +183,78 @@ public class ExercitoDeElfosTest
     }
     
     @Test
-    public void buscaElfosPorStatusSemElfos() {
+    public void agruparVariosElfosPorStatus() {
         // Arrange
+        ElfoVerde elfoVivo1 = new ElfoVerde("Green 1");
+        ElfoNoturno elfoVivo2 = new ElfoNoturno("Aa");
+        ElfoVerde elfoVivo3 = new ElfoVerde("BB");
+        ElfoVerde elfoAtacando1 = new ElfoVerde("Green 2");
+        ElfoVerde elfoAtacando2 = new ElfoVerde("Green 3");
+        elfoAtacando1.atirarFlecha(new Orc());
+        elfoAtacando2.atirarFlecha(new Orc());
+        HashMap<Status, ArrayList<Elfo>> esperado = new HashMap<>();
+        esperado.put(Status.ATACANDO, new ArrayList<Elfo>(
+            Arrays.asList(elfoAtacando1, elfoAtacando2)
+        ));
+        esperado.put(Status.VIVO, new ArrayList<>(
+            Arrays.asList(elfoVivo3, elfoVivo2, elfoVivo1)
+        ));
         ExercitoDeElfos exercito = new ExercitoDeElfos();
-        HashMap<String, Elfo> resultadoEsperado = new HashMap<>();
+        try {
+            exercito.alistarElfo(elfoAtacando1);
+            exercito.alistarElfo(elfoAtacando2);
+            exercito.alistarElfo(elfoVivo1);
+            exercito.alistarElfo(elfoVivo2);
+            exercito.alistarElfo(elfoVivo3);
+        } catch (NaoPodeAlistarException erro) {
+            System.out.println(erro);
+        }
         // Act
+        exercito.agruparElfoPeloStatus();
+        HashMap<Status, ArrayList<Elfo>> resultado = exercito.getExercitoPorStatus();
         // Assert
-        assertEquals( resultadoEsperado, exercito.buscarElfoPorStatus(Status.VIVO));
+        assertEquals(esperado, resultado);
     }
     
     @Test
-    public void buscaElfosPorStatusComUmElfo() {
+    public void buscarPorStatusAtacandoComVariosElfos() {
         // Arrange
+        ElfoVerde elfoVivo1 = new ElfoVerde("Green 1");
+        ElfoNoturno elfoVivo2 = new ElfoNoturno("Aa");
+        ElfoVerde elfoVivo3 = new ElfoVerde("BB");
+        ElfoVerde elfoAtacando1 = new ElfoVerde("Green 2");
+        ElfoVerde elfoAtacando2 = new ElfoVerde("Green 3");
+        elfoAtacando1.atirarFlecha(new Orc());
+        elfoAtacando2.atirarFlecha(new Orc());
+        ArrayList<Elfo> esperado = new ArrayList<Elfo>(
+            Arrays.asList(elfoAtacando1, elfoAtacando2)
+        );
         ExercitoDeElfos exercito = new ExercitoDeElfos();
-        Elfo legolas = new ElfoNoturno("Celeborn");
-        HashMap<String, Elfo> resultadoEsperado = new HashMap<>();
-        resultadoEsperado.put(legolas.getNome(), legolas);
-        // Act
         try {
-            exercito.alistarElfo(legolas);            
-        } catch ( NaoPodeAlistarException error ) {
-            System.out.println(error);
+            exercito.alistarElfo(elfoAtacando1);
+            exercito.alistarElfo(elfoAtacando2);
+            exercito.alistarElfo(elfoVivo1);
+            exercito.alistarElfo(elfoVivo2);
+            exercito.alistarElfo(elfoVivo3);
+        } catch (NaoPodeAlistarException erro) {
+            System.out.println(erro);
         }
-
+        // Act
+        ArrayList<Elfo> resultado = exercito.buscarElfoPorStatus(Status.ATACANDO);
         // Assert
-        assertEquals( resultadoEsperado, exercito.buscarElfoPorStatus(Status.VIVO));
+        assertEquals(esperado, resultado);
     }
     
-    @Test
-    public void buscaElfosPorStatusComDoisElfos() {
+    @Test(expected=NaoPodeAlistarException.class)
+    public void alistarElfoBaseLançaErro() throws NaoPodeAlistarException {
         // Arrange
+        Elfo elfo = new Elfo("Legolas");
         ExercitoDeElfos exercito = new ExercitoDeElfos();
-        Elfo legolas = new ElfoNoturno("Legolas");
-        Elfo celeborn = new ElfoVerde("Celeborn");
-        HashMap<String, Elfo> resultadoEsperado = new HashMap<>();
-        resultadoEsperado.put(celeborn.getNome(), celeborn);
-        resultadoEsperado.put(legolas.getNome(), legolas);
         // Act
         try {
-            exercito.alistarElfo(celeborn);
-            exercito.alistarElfo(legolas);
-        } catch ( NaoPodeAlistarException error ) {
-            System.out.println(error);
+            exercito.alistarElfo(elfo);
+        } catch (NaoPodeAlistarException error) {
+            throw error;
         }
-        // Assert
-        assertEquals( resultadoEsperado, exercito.buscarElfoPorStatus(Status.VIVO));
-    }
-    
-    @Test
-    public void buscaElfosPorStatusComVariosElfos() {
-        // Arrange
-        ExercitoDeElfos exercito = new ExercitoDeElfos();
-        Elfo legolas = new ElfoNoturno("Legolas");
-        Elfo celeborn = new ElfoVerde("Celeborn");
-        Elfo dimitri = new ElfoNoturno("Dimitri");
-        Elfo robinHood = new ElfoVerde("Robin Hood");
-        Elfo elround = new ElfoNoturno("Elrond");
-        HashMap<String, Elfo> resultadoEsperado = new HashMap<>();
-        resultadoEsperado.put(legolas.getNome(), legolas);
-        resultadoEsperado.put(celeborn.getNome(), celeborn);
-        resultadoEsperado.put(dimitri.getNome(), dimitri);
-        resultadoEsperado.put(robinHood.getNome(), robinHood);
-        resultadoEsperado.put(elround.getNome(), elround);
-        // Act
-        try {
-            exercito.alistarElfo(legolas);
-            exercito.alistarElfo(celeborn);
-            exercito.alistarElfo(dimitri);
-            exercito.alistarElfo(robinHood);
-            exercito.alistarElfo(elround);
-        } catch ( NaoPodeAlistarException error ) {
-            System.out.println(error);
-        }
-        // Assert
-        assertEquals( resultadoEsperado, exercito.buscarElfoPorStatus(Status.VIVO));
-    }
-    
-    @Test
-    public void buscaElfosPorStatusComVariosElfosEConflito() {
-        // Arrange
-        ExercitoDeElfos exercito = new ExercitoDeElfos();
-        Elfo legolas = new ElfoNoturno("Aa");
-        Elfo celeborn = new ElfoVerde("Bb");
-        Elfo dimitri = new ElfoNoturno("Dimitri");
-        Elfo robinHood = new ElfoVerde("Robin Hood");
-        Elfo elround = new ElfoNoturno("Elrond");
-        HashMap<String, Elfo> resultadoEsperado = new HashMap<>();
-        resultadoEsperado.put(legolas.getNome(), legolas);
-        resultadoEsperado.put(celeborn.getNome(), celeborn);
-        resultadoEsperado.put(dimitri.getNome(), dimitri);
-        resultadoEsperado.put(robinHood.getNome(), robinHood);
-        resultadoEsperado.put(elround.getNome(), elround);
-        // Act
-        try {
-            exercito.alistarElfo(legolas);
-            exercito.alistarElfo(celeborn);
-            exercito.alistarElfo(dimitri);
-            exercito.alistarElfo(robinHood);
-            exercito.alistarElfo(elround);
-        } catch ( NaoPodeAlistarException error ) {
-            System.out.println(error);
-        }
-        // Assert
-        assertEquals( resultadoEsperado, exercito.buscarElfoPorStatus(Status.VIVO));
     }
 }
