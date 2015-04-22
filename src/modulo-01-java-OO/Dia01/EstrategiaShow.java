@@ -6,6 +6,8 @@ import java.util.*;
  * @author Rodrigo Dagnese
  */
 public class EstrategiaShow implements EstrategiaDeAtaque {
+    private ArrayList<Elfo> ordemAtaque = new ArrayList<>();
+    
     public void atacarOrcs( ArrayList<Elfo> elfos, ArrayList<Orc> orcs ) {
 
         int quantidadeAtaques = elfos.size() * orcs.size();
@@ -19,11 +21,16 @@ public class EstrategiaShow implements EstrategiaDeAtaque {
                 if ( quantidadeAtaquesElfosNoturnos >= limiteElfosNoturnos )
                     continue;
                 quantidadeAtaquesElfosNoturnos++;
+                ordemAtaque.add(elfo);
             }
 
             for (Orc orc : orcs) {
                 elfo.atirarFlecha(orc);
             }
         }
+    }
+    
+    public ArrayList<Elfo> getOrdemDoUltimoAtaque() {
+        return ordemAtaque;
     }
 }

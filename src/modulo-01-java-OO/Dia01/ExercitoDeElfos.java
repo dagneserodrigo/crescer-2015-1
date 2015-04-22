@@ -73,6 +73,11 @@ public class ExercitoDeElfos
         }*/
         //return elfosComMesmoStatus;
     }
+    
+     public void mudaDeEstrategia(EstrategiaDeAtaque novaEstrategia) {
+        estrategia = novaEstrategia;
+    }    
+    
     /**
      * Busca Elfos pelo Status
      */
@@ -86,5 +91,8 @@ public class ExercitoDeElfos
         
         estrategia.atacarOrcs( elfosQueVaoAtacar, orcs );
     }
-
+    
+    public ArrayList<Elfo> getOrdemDoUltimoAtaque() {
+        return this.estrategia.getOrdemDoUltimoAtaque();
+    }
 }
