@@ -73,17 +73,19 @@ commit
 rollback
 
 --12
-Select Nome, (CASE WHEN Sexo = 'M' THEN 'Masculino'
-			  WHEN Sexo = 'F' THEN 'Feminino'
-			  END) AS Sexo
+Select Nome, 
+       (CASE WHEN Sexo = 'M' THEN 'Masculino'
+		WHEN Sexo = 'F' THEN 'Feminino'
+		ELSE 'Outro'
+		END) AS Genero
 from Associado;
 
 --13
 Select NomeEmpregado,
 	   Salario,
-	   (CASE WHEN Salario >= '2326.00' THEN '27,5%'
-		WHEN Salario between '1164.00' and '2326.00' THEN '15%'
-		ELSE '0%' END) as PercentualASerDescontado 
+	   (CASE WHEN Salario > 2326.00 THEN (Salario*0.275)
+		WHEN Salario between 1164.01 and 2326.00 THEN (Salario*0.15)
+		ELSE 0 END) as ValorASerDescontado
 from Empregado;
 
 
