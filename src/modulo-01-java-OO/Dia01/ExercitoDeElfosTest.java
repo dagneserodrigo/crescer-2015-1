@@ -197,7 +197,7 @@ public class ExercitoDeElfosTest
             Arrays.asList(elfoAtacando1, elfoAtacando2)
         ));
         esperado.put(Status.VIVO, new ArrayList<>(
-            Arrays.asList(elfoVivo3, elfoVivo2, elfoVivo1)
+            Arrays.asList(elfoVivo2, elfoVivo3, elfoVivo1)
         ));
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         try {

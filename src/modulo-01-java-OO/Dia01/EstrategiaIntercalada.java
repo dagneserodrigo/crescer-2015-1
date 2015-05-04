@@ -14,8 +14,6 @@ public class EstrategiaIntercalada implements EstrategiaDeAtaque
                 contElfoNoturno++;
             }
         }
-        System.out.println(contElfoVerde);
-        System.out.println(contElfoNoturno);
         
         exercitoProporcional = contElfoVerde == contElfoNoturno;
         

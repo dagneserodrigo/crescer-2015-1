@@ -27,11 +27,11 @@ public class EstrategiaIntercaladaTest
         exercito.alistarElfo(night1);
         exercito.alistarElfo(night2);
         exercito.alistarElfo(green1);
-        exercito.alistarElfo(night3);
         exercito.alistarElfo(green2);
-        exercito.alistarElfo(green3);
+        exercito.alistarElfo(night3);
+        exercito.alistarElfo(green3); 
         ArrayList<Elfo> esperado = new ArrayList<>(
-            Arrays.asList(green2, night1, green3, night2, green1, night3)
+            Arrays.asList(green2, night3, green1, night2, green3, night1)
         );
         // Act
         exercito.atacarHorda(new ArrayList<>(
@@ -56,7 +56,7 @@ public class EstrategiaIntercaladaTest
         exercito.alistarElfo(night1);
         exercito.alistarElfo(night2);
         ArrayList<Elfo> esperado = new ArrayList<>(
-            Arrays.asList(night2, green1, night1, green2)
+            Arrays.asList(night1, green2, night2, green1)
         );
         // Act
         exercito.atacarHorda(new ArrayList<>(

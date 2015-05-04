@@ -8,7 +8,7 @@ public class ExercitoDeElfos
 {
     private HashMap<String, Elfo> exercitoDeElfos = new HashMap<>();
     private HashMap<Status, ArrayList<Elfo>> porStatus = new HashMap<>();
-    private EstrategiaDeAtaque  estrategia = new EstrategiaNormal();
+    private EstrategiaDeAtaque estrategia = new EstrategiaNormal();
     
     public HashMap<String, Elfo> getExercito() {
         return this.exercitoDeElfos;
@@ -16,6 +16,10 @@ public class ExercitoDeElfos
 
     public HashMap<Status, ArrayList<Elfo>> getExercitoPorStatus() {
         return this.porStatus;
+    }
+    
+    public String estrategiaDeAtaque() {
+        return this.estrategia.toString();
     }
 
     /**
@@ -75,7 +79,7 @@ public class ExercitoDeElfos
     }
     
      public void mudaDeEstrategia(EstrategiaDeAtaque novaEstrategia) {
-        estrategia = novaEstrategia;
+        this.estrategia = novaEstrategia;
     }    
     
     /**
