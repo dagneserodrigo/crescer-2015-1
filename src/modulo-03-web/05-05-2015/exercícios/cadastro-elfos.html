@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Web</title>
+	</head>
+	<body>
+		<h1>Cadastro de Elfos</h1>
+		<form action="" method="post" id="cadastro" accept-charset="utf-8" enctype="multipart/form-data">
+			<div style="margin-bottom: 8px;"
+				<label for="nome">Nome:</label>
+				<input type="text" id="nome" name="nome" placeholder="Mínimo de 6 caracteres" pattern=".{6,}" required>
+			</div>
+			<div style="margin-bottom: 8px;">
+				<label for="sexo">Sexo:</label>
+				<input type="radio" name="sexo" id="sexo" value="masculino" required>Masculino
+				<input type="radio" name="sexo" id="sexo" value="feminino" required>Feminino
+			</div>
+			<div style="margin-bottom: 8px;">
+				<label for="flechas">Quantidade de flechas:</label>
+				<input type="number" id="flechas" name="flechas" placeholder="Quantidade de Flechas" value="42">
+			</div>
+			<div style="margin-bottom: 8px;">
+				<label for="dataNascimento">Data de nascimento:</label>
+				<input type="date" id="dataNascimento" name="dataNascimento" required>
+			</div>
+			<!--Exemplo com radio-->
+			<!--<div style="margin-bottom: 8px;">
+				<label for="status">Status inicial do Elfo:</label>				  
+				<input type="radio" name="status" id="status" value="dormindo">Dormindo
+				<input type="radio" name="status" id="status" value="cacando">Caçando
+				<input type="radio" name="status" id="status" value="contandoPiada">Contando Piada
+			</div>-->
+			<div style="margin-bottom: 8px;">
+				<label for="status">Status inicial:</label>
+				<select name="status" form="cadastro">
+					<option value="">Status</option>
+				  	<option value="dormindo">Dormindo</option>
+				  	<option value="cacando">Caçando</option>
+				  	<option value="contandoPiada">Contando Piada</option>
+				</select>
+			</div>
+			<div style="margin-bottom: 8px;">
+				<label for="itens">Itens iniciais do Elfo:</label>
+				<input type="checkbox" id="itens" name="itens" value="arco e flecha" checked>Arco e Flecha
+				<input type="checkbox" id="itens" name="itens" value="espada de aco porto-alegrense">Espada de aço Porto-alegrense
+				<input type="checkbox" id="itens" name="itens" value="escudo de amburana" checked>Escudo de amburana
+				<input type="checkbox" id="itens" name="itens" value="pocao hp">Poção HP
+			</div>
+			<div style="margin-bottom: 8px;">
+				<label for="imagem">Imagem:</label>
+				<input type="file" name="imagem" id="imagem" accept=".jpg, .png">
+			</div>
+			<input type="submit" value="Cadastrar">
+		</form>
+	</body>	
+</html>
