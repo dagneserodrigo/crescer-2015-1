@@ -7,9 +7,9 @@
 	<body>
 		<h1>Cadastro de Elfos</h1>
 		<form action="" method="post" id="cadastro" accept-charset="utf-8" enctype="multipart/form-data">
-			<div style="margin-bottom: 8px;"
+			<div style="margin-bottom: 8px;">
 				<label for="nome">Nome:</label>
-				<input type="text" id="nome" name="nome" placeholder="Mínimo de 6 caracteres" pattern=".{6,}" required>
+				<input type="text" id="nome" name="nome" placeholder="Nome" title="mínimo de 6 caracteres" pattern=".{6,}" required>
 			</div>
 			<div style="margin-bottom: 8px;">
 				<label for="sexo">Sexo:</label>
@@ -33,7 +33,7 @@
 			</div>-->
 			<div style="margin-bottom: 8px;">
 				<label for="status">Status inicial:</label>
-				<select name="status" form="cadastro">
+				<select id="status" name="status">
 					<option value="">Status</option>
 				  	<option value="dormindo">Dormindo</option>
 				  	<option value="cacando">Caçando</option>
