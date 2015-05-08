@@ -42,7 +42,7 @@ var clubes = [
 //2.A
 function ordenaPorNacionais(clubes) {
 	clubes.sort(function(a,b) { 
-		return (a.titulos[0].qtd < b.titulos[0].qtd); 
+		return a.titulos[0].qtd < b.titulos[0].qtd; 
 	})
 }
 
