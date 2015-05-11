@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" charset="utf-8">
+		// 1
+		function brewdog(a, b) {
+			var charA = a.split("");
+			var charB = b.split("");
+			var cont = 0;
+			var tamanhoMaior = 0;
+
+			charA.length > charB.length ? tamanhoMaior = charA.length : tamanhoMaior = charB.length;
+
+			for (var i = 0; i < tamanhoMaior; i++) {
+				if(charA[i] != charB[i]) {
+					cont++;
+				}
+			};
+			return cont;
+		}
+
+		// 2
+		function Emprestimo(valorTotal, taxaJuros, quantidadeParcelas) {
+			this.valorTotal = valorTotal,
+			this.taxaJuros = taxaJuros,
+			this.quantidadeParcelas = quantidadeParcelas || 3;
+
+			this.valorParcela = function() {
+				var valor = (this.valorTotal * ((Math.pow((1 + this.taxaJuros), this.quantidadeParcelas) * this.taxaJuros) / (Math.pow((1 + this.taxaJuros), this.quantidadeParcelas) - 1)));
+				return parseFloat(valor.toFixed(2));
+			},
+
+			this.valorTotalJuros = function() {
+				var totalJuros = ((this.valorParcela() * this.quantidadeParcelas) - this.valorTotal);
+				return parseFloat(totalJuros.toFixed(2));
+			}
+		};
+
+		//3
+		function palindromo(palavra) {
+			palavra = palavra.toLowerCase();
+			palavra = palavra.replace(/[|~ ,-@!#?$.<>"'%¨*°ªº_¹²³£¢¬§{}]/g, "");
+			palavra = palavra.replace(/[áâàãä]/g, "a");
+			palavra = palavra.replace(/[èéêë]/g, "e");
+			palavra = palavra.replace(/[ìí]/g, "i");
+			palavra = palavra.replace(/[òóõôö]/g, "o");
+			palavra = palavra.replace(/[ùúü]/g, "u");
+			palavra = palavra.replace(/[ç]/g, "c");
+			palavra = palavra.replace(/[ýÿ]/g, "y");
+			palavra = palavra.replace(/[ñ]/g, "n");
+
+
+			var palindromos = ['iluminatti', 'ledesma', 'dante', 'verdemusgo', 'bacon'];
+			
+			if(palindromos.indexOf(palavra) !== -1) {
+				return true;
+			}
+
+			return palavra === palavra.split("").reverse().join("");
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
