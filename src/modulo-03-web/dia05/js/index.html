@@ -10,10 +10,10 @@
 			var cont = 0;
 			var tamanhoMaior = 0;
 
-			charA.length > charB.length ? tamanhoMaior = charA.length : tamanhoMaior = charB.length;
+			tamanhoMaior = Math.max(charA.length, charB.length);
 
 			for (var i = 0; i < tamanhoMaior; i++) {
-				if(charA[i] != charB[i]) {
+				if(charA[i] !== charB[i]) {
 					cont++;
 				}
 			};
