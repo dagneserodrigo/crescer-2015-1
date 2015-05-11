@@ -1,0 +1,23 @@
+*, body { margin: 0; padding: 0; }
+
+.black {
+	background-color: #000;
+	height: 100vh;
+	width: 33%;
+	float: left;
+}
+
+.yellow {
+	background-color: yellow;
+	height: 100vh;
+	display: inline-block;
+	width: 33%;
+	float: left
+}
+
+.red {
+	background-color: red;
+	height: 100vh;
+	float:left;
+	width: 33%;
+}
