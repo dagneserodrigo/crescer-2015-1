@@ -14,16 +14,16 @@ var number = $('*[alt]').length;
 var rows = $('tr:even').not('tr:nth-child(1)');
 
 // 1F
-var h2 = $('h2:contains("B"):contains("e")');
+var h2 = $('h2:contains("B"):contains("e")').length;
 
 // 1G
 var li = $('#myList > li').not('.current');
 
 // 1H
-$('img, h3').last()
+$('img:last, h3:last');
 
-// 1L
-var caracteres = $('#myList li:nth-child(n+6)').text().length;
+// 1I
+var caracteres = $('#myList .current ~ li').text().length;
 
 //-----------------------------------------------------------------//
 
@@ -53,5 +53,5 @@ for(var i = 8; i <= 12; i++ ) {
 $('#myList > li:nth-child(even)').remove()
 
 // 3C
-$('<div class="module"></div>').insertAfter($('#specials').last());
-$( "img:first" ).clone().appendTo( ".module:last" );
+$('<div class="module"></div>').insertAfter($('div .module').last()).append($( "img:first" ).clone());
+
