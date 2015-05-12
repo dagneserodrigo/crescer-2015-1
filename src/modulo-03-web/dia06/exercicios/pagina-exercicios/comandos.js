@@ -20,6 +20,7 @@ var h2 = $('h2:contains("B"):contains("e")');
 var li = $('#myList > li').not('.current');
 
 // 1H
+$('img, h3').last()
 
 // 1L
 var caracteres = $('#myList li:nth-child(n+6)').text().length;
@@ -36,7 +37,7 @@ $('input[type=text]').closest('form').addClass('template');
 $('#myList > .current').removeClass('current').next().addClass('current');
 
 // 2D
-$('#specials > h2').text('Promoções')
+$('#specials > h2').text('Promoções').parent().find('option[value=friday]').text('Dimitri'); 
 
 // 2E
 $('#slideshow > li').first().addClass('current').siblings().addClass('disabled');
