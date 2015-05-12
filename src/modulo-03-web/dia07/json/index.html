@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="noticias">
+		
+	</div>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script>
+	$(function() {
+		$.ajax({
+			url: 'http://content.guardianapis.com/search?q=manchester%20united&api-key=test',
+			type: 'get'
+		}).done(function(res) {
+			res.response.results.forEach(function(i){
+				$('#noticias').append($('<a>').attr('href', i.webUrl).attr('target', 'blank').append('<article>' + i.webUrl + '</article>'));
+				console.log(i.webTitle);
+			});
+		});
+	})
+	</script>
+</body>
+</html>
