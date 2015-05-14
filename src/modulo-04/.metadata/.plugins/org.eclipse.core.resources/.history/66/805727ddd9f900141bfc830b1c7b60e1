@@ -1,0 +1,21 @@
+package filmator;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
+
+public class NetfloxTest {
+	@Test
+	public void adicionarFilme() throws Exception {
+		Netflox streaming = new Netflox();
+		Filme filmeAcao = new Filme("Filme acao", Genero.ACAO);
+		ArrayList<Filme> esperado = new ArrayList<>();
+		
+		esperado.add(filmeAcao);
+		streaming.adicionarFilme(filmeAcao);
+		
+		assertEquals(esperado, streaming.getListaFilmes());
+	}
+}

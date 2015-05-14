@@ -1,0 +1,19 @@
+package test;
+
+import org.junit.Test;
+
+import filmator.Filme;
+
+public class FilmeTest {
+	@Test
+	public void adicionaAtorAoElenco() {
+		Filme filme = new Filme('Nome Filme');
+		Ator ator = new Ator('Ator');
+		ArrayList<Ator> esperado = new ArrayList<>();
+		
+		esperado.add(ator)
+		filme.adicionarAtor(new Ator());
+		
+		AssertEquals(esperado, filme.getAtores());
+	}
+}

@@ -1,0 +1,13 @@
+package filmator;
+
+public class Netflox {
+	ArrayList<Filme> listaFilmes = new ArrayList<>();
+	
+	public void reproduzirFilme(Filme filme) {
+		
+	}
+	
+	public void gerarRelatorio() {
+		
+	}
+}

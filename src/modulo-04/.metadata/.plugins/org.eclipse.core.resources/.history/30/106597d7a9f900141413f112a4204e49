@@ -1,0 +1,16 @@
+package filmator;
+
+import java.util.ArrayList;
+
+public class Netflox {
+	ArrayList<Filme> listaFilmes = new ArrayList<Filme>();
+	private int visualizacoes;
+	
+	public void reproduzirFilme(Filme filme) {
+		
+	}
+	
+	public void gerarRelatorio() {
+		
+	}
+}

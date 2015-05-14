@@ -1,0 +1,32 @@
+package filmator;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Netflox {
+	private ArrayList<Filme> listaFilmes = new ArrayList<Filme>();
+	private HashMap<Genero, AtomicInteger> visualizacoes = new HashMap<>();
+	
+	public void reproduzirFilme(Filme filme) {
+		if (listaFilmes.contains(filme)) {
+			System.out.println("Reproduzindo filme...");
+			if(visualizacoes.containsKey(filme.getGenero())) {
+				visualizacoes.get(filme).incrementAndGet();
+			} else {
+				visualizacoes.put(filme.getGenero(), new AtomicInteger(1));
+			}
+		}
+	}
+	
+	public void gerarRelatorio() {
+		for (Genero key: visualizacoes.keySet()) {
+			System.out.println("Gênero : " + visualizacoes);
+		    System.out.println("Quantidade de visualizações : " + visualizacoes.get(key));
+		}
+	}
+	
+	public void adicionarFilme(Filme filme) {
+		listaFilmes.add(filme);
+	}
+}

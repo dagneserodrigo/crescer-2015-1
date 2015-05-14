@@ -1,0 +1,11 @@
+package test;
+
+import org.junit.Test;
+
+public class FilmeTest {
+	@Test
+	public void adicionaAtorAoElenco() {
+		Filme filme = new Filme();
+		
+	}
+}
