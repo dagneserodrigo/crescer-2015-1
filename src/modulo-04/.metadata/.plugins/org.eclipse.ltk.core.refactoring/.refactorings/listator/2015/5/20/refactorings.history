@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename compilation unit &apos;listator.File.java&apos; to &apos;listFiles.java&apos;&#x0D;&#x0A;- Original project: &apos;listator&apos;&#x0D;&#x0A;- Original element: &apos;listator.File.java&apos;&#x0D;&#x0A;- Renamed element: &apos;listator.listFiles.java&apos;" description="Rename compilation unit &apos;File.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;listator{File.java" name="listFiles.java" references="false" stamp="1431538649873" version="1.0"/>
-</session>

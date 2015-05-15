@@ -17,7 +17,7 @@ public class APP {
 		
 		System.out.println(filmeTeste.buscaAtorPorNome("Teste"));
 		
-		Netflox streaming = new Netflox();
+		Empresa streaming = new Empresa("Netflox");
 		streaming.adicionarFilme(filmeTeste);
 		streaming.reproduzirFilme(filmeTeste);
 		streaming.adicionarFilme(filmeComedia);
