@@ -45,7 +45,7 @@ public class Filme {
 		ArrayList<Ator> atorComNomeBuscado = new ArrayList<>();
 		
 		for (Ator atorAtual : elenco) {
-			if (atorAtual.getNome().toLowerCase().equals(nome.toLowerCase())) {
+			if (atorAtual.getNome().toLowerCase().contains(nome.toLowerCase())) {
 				atorComNomeBuscado.add(atorAtual);
 			}
 		}

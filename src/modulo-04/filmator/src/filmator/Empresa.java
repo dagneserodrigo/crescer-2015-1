@@ -17,9 +17,9 @@ public class Empresa {
 			System.out.println("Reproduzindo filme...");
 			if(visualizacoes.containsKey(filme.getGenero())) {
 				Integer quantidade = visualizacoes.get(filme.getGenero());
-				visualizacoes.put(filme.getGenero(), (quantidade + 1));
+				visualizacoes.put(filme.getGenero(), ++quantidade);
 			} else {
-				visualizacoes.put(filme.getGenero(), new Integer(1));
+				visualizacoes.put(filme.getGenero(), 1);
 			}
 		}
 	}
