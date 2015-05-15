@@ -2,11 +2,10 @@ package filmator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Empresa {
 	protected ArrayList<Filme> listaFilmes = new ArrayList<Filme>();
-	protected HashMap<Genero, AtomicInteger> visualizacoes = new HashMap<>();
+	protected HashMap<Genero, Integer> visualizacoes = new HashMap<>();
 	protected String nome;
 	
 	public Empresa(String nome) {
@@ -17,13 +16,14 @@ public class Empresa {
 		if (listaFilmes.contains(filme)) {
 			System.out.println("Reproduzindo filme...");
 			if(visualizacoes.containsKey(filme.getGenero())) {
-				visualizacoes.get(filme.getGenero()).incrementAndGet();
+				Integer quantidade = visualizacoes.get(filme.getGenero());
+				visualizacoes.put(filme.getGenero(), (quantidade + 1));
 			} else {
-				visualizacoes.put(filme.getGenero(), new AtomicInteger(1));
+				visualizacoes.put(filme.getGenero(), new Integer(1));
 			}
 		}
 	}
-	
+
 	public void gerarRelatorio() {
 		StringBuilder construtor = new StringBuilder();
 
@@ -44,7 +44,7 @@ public class Empresa {
 		return this.listaFilmes;
 	}
 	
-	public HashMap<Genero, AtomicInteger> getVisualizacoes() {
+	public HashMap<Genero, Integer> getVisualizacoes() {
 		return this.visualizacoes;
 	}
 }

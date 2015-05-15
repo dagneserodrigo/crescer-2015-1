@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
 
@@ -25,9 +24,9 @@ public class EmpresaTest {
 	public void reproduzirFilme() throws Exception {
 		Empresa streaming = new Empresa("IItube");
 		Filme filmeAcao = new Filme("Filme acao", Genero.ACAO);
-		 HashMap<Genero, AtomicInteger> esperado = new HashMap<>();
+		 HashMap<Genero, Integer> esperado = new HashMap<>();
 		
-		esperado.put(filmeAcao.getGenero(), new AtomicInteger(1));
+		esperado.put(filmeAcao.getGenero(), new Integer(1));
 		streaming.adicionarFilme(filmeAcao);
 		streaming.reproduzirFilme(filmeAcao);
 		
@@ -38,9 +37,9 @@ public class EmpresaTest {
 	public void reproduzirDuasVezesUmFilme() throws Exception {
 		Empresa streaming = new Empresa("Netflox");
 		Filme filmeAcao = new Filme("Filme acao", Genero.ACAO);
-		 HashMap<Genero, AtomicInteger> esperado = new HashMap<>();
+		 HashMap<Genero, Integer> esperado = new HashMap<>();
 		
-		esperado.put(filmeAcao.getGenero(), new AtomicInteger(2));
+		esperado.put(filmeAcao.getGenero(), new Integer(2));
 		streaming.adicionarFilme(filmeAcao);
 		streaming.reproduzirFilme(filmeAcao);
 		streaming.reproduzirFilme(filmeAcao);
