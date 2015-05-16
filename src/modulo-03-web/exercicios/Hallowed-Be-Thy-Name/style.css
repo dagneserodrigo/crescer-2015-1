@@ -1,0 +1,85 @@
+body {
+	text-align: center;
+}
+
+.albums img {
+	width: 300px;
+	height: 300px;
+	margin: 20px;
+}
+
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 99999;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 535px;
+	height: auto;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+}
+
+.buscaArtista {
+	margin: 20px;
+}
+
+.buscaArtista > input {
+    border: 0;
+    border-color: transparent;
+	padding: 0 0 0.75em 0em;
+	color: #000;
+	font-size: 2.15em;
+	outline: none;
+	display: inline-block;
+	border-bottom: 1px solid #ccc;
+}
+
+.buscaArtista > .search {
+	width: 64px;
+	height: 64px;
+	border: 0;
+	color: transparent;
+    border-color: transparent;
+	padding: 0.85em 0 0.75em 1.5em;
+	outline: none;
+	background: url(img/search.png) no-repeat;
+	display: inline-block;
+	vertical-align: 5%;
+}
+
+.error {
+	text-align: left;
+	display: none;
+	color: #999;
+	font-size: 1em;
+	color: #e74c3c;
+}
+
+.searchFixed {
+	display: none;
+	position: fixed;
+	width: 35px;
+	height: 35px;
+	top: 100px;
+	left: 5px;
+	background: url(img/fixed.png) no-repeat center;
+	background-color: #ccc;
+}
+
+.searchFixed:hover{
+	background-color: #3498db;
+}
