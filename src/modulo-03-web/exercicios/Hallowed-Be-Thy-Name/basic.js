@@ -35,6 +35,13 @@ function buscaArtista() {
 }
 
 function buscaAlbums() {
+
+	if ($('#artista').val().toLowerCase() === 'justin bieber') {
+		if ((Math.random() * 100) <= 80) {
+			artistId = 'douchebag';
+		}
+	}
+
 	$.ajax({
 		url: 'https://api.spotify.com/v1/artists/' + artistId + '/albums?limit=50',
 		type: 'get',
@@ -42,6 +49,9 @@ function buscaAlbums() {
 	}).done(function(data) {
 		albums = $.extend({}, data.items);
 		gerarHtml();
+	}).fail(function(data){
+		$('body').append('<h2>Caro usuário, devido a um erro ' + data.status + ', não foi possível pesquisar por <span>' + $('#artista').val() + '</span></h2>')
+				 .append('<img src="img/marlon.jpg" alt="marlon"/>');
 	});
 };
 

@@ -83,3 +83,7 @@ body {
 .searchFixed:hover{
 	background-color: #3498db;
 }
+
+span {
+	color: #FF639A;
+}
