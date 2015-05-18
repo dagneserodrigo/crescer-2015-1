@@ -1,7 +1,7 @@
 'use strict';
 
 var artistId;
-var albums;
+var albums; 
 
 $(function() {
 	buscaArtista();
@@ -35,9 +35,10 @@ function buscaArtista() {
 }
 
 function buscaAlbums() {
+	var artist = $('#artista').val();
 
-	if ($('#artista').val().toLowerCase() === 'justin bieber') {
-		if ((Math.random() * 100) <= 80) {
+	if (artist.toLowerCase() === 'justin bieber') {
+		if ((Math.random() * 100) < 81) {
 			artistId = 'douchebag';
 		}
 	}
@@ -50,7 +51,7 @@ function buscaAlbums() {
 		albums = $.extend({}, data.items);
 		gerarHtml();
 	}).fail(function(data){
-		$('body').append('<h2>Caro usuário, devido a um erro ' + data.status + ', não foi possível pesquisar por <span>' + $('#artista').val() + '</span></h2>')
+		$('body').append('<h2>Caro usuário, devido a um erro ' + data.status + ', não foi possível pesquisar por <span>' + artist + '</span></h2>')
 				 .append('<img src="img/marlon.jpg" alt="marlon"/>');
 	});
 };
