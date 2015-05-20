@@ -12,9 +12,11 @@ public class LivroTest {
 	public void criaLivro() throws Exception {
 		List<Receita> receitaEsperada = new ArrayList<>();
 		Livro receitasRuins = new Livro("Receitas ruins");
+		
 		IngredienteReceita massaMiojo = new IngredienteReceita("miojo", 1.0, UnidadeMedida.UNIDADE, 2.0);
 		Instrucao modoPreparo = new Instrucao("3 minuto tá pronto!");
 		Receita miojo = new Receita("Miojo how to");
+		
 		miojo.adicionarIngredientesNaReceita(massaMiojo);
 		miojo.adicionarInstrucao(modoPreparo);
 		receitaEsperada.add(miojo);
@@ -59,21 +61,12 @@ public class LivroTest {
 		miojo.adicionarIngredientesNaReceita(massaMiojo);
 		miojo.adicionarInstrucao(modoPreparo);
 		
-		Receita receitaEsperada = new Receita("Miojo how to");
-		miojo.adicionarIngredientesNaReceita(massaMiojo);
-		miojo.adicionarInstrucao(modoPreparo);
-		
+		Receita receitaEsperada = miojo;
 		receitasRuins.inserir(miojo);
 		
 		Receita receitaObtida = receitasRuins.buscaReceitaPeloNome("Miojo how to");
 		
-		if (receitaEsperada == null && receitaObtida == null) {
-	        assert(true);
-	    } else if (receitaEsperada != null && receitaEsperada.equals(receitaObtida)) {
-	        assert(true);
-	    } else {
-	    	assert(false);
-	    }
+		assertEquals(receitaEsperada, receitaObtida);
 	}
 	
 	@Test
@@ -84,10 +77,11 @@ public class LivroTest {
 		miojo.adicionarIngredientesNaReceita(new IngredienteReceita("agua", 200.0, UnidadeMedida.ML, 5.0));
 		miojo.adicionarInstrucao(new Instrucao("3 minuto tá pronto!"));
 		receitasRuins.inserir(miojo);
-		
-		double valorEsperado = 7.0;
+
 		List<Receita> receitas = new ArrayList<>();
 		receitas.add(miojo);
+		
+		double valorEsperado = 7.0;
 
 		assertEquals(valorEsperado, receitasRuins.getValorTotal(receitas), 0.01);
 	}
@@ -169,7 +163,6 @@ public class LivroTest {
 		listaEsperada.add("4.0 xícara(s) arroz");
 		listaEsperada.add("2.0 colher(es) (sopa) sal");
 
-		System.out.println(receitasRuins.listaDeCompras(receitas));
 		assertEquals(listaEsperada, receitasRuins.listaDeCompras(receitas));
 		
 	}
