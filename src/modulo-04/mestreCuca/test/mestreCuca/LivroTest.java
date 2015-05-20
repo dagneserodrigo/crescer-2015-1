@@ -29,26 +29,86 @@ public class LivroTest {
 		
 	}
 	
+	@Test(expected=ReceitaNulaException.class)
+	public void insereReceitaComNomeVazio() {
+		Livro receitasRuins = new Livro("Receitas ruins");
+		
+		IngredienteReceita massaMiojo = new IngredienteReceita("miojo", 1.0, UnidadeMedida.UNIDADE, 2.0);
+		Instrucao modoPreparo = new Instrucao("3 minuto tá pronto!");
+		Receita miojo = new Receita("");
+		
+		miojo.adicionarIngredientesNaReceita(massaMiojo);
+		miojo.adicionarInstrucao(modoPreparo);
+		
+		receitasRuins.inserir(miojo);
+	}
+	
+	@Test(expected=ReceitaNulaException.class)
+	public void insereReceitaSemIngredientes() {
+		Livro receitasRuins = new Livro("Receitas ruins");
+
+		Instrucao modoPreparo = new Instrucao("3 minuto tá pronto!");
+		Receita miojo = new Receita("miojo how to");
+
+		miojo.adicionarInstrucao(modoPreparo);
+
+		receitasRuins.inserir(miojo);
+	}
+	
+	@Test(expected=ReceitaNulaException.class)
+	public void insereReceitaSemModoDePreparo() {
+		Livro receitasRuins = new Livro("Receitas ruins");
+		
+		IngredienteReceita massaMiojo = new IngredienteReceita("miojo", 1.0, UnidadeMedida.UNIDADE, 2.0);
+		Receita miojo = new Receita("miojo how to");
+		
+		miojo.adicionarIngredientesNaReceita(massaMiojo);
+		
+		receitasRuins.inserir(miojo);
+	}
+	
 	@Test
 	public void atualizaReceita() throws Exception {
 		List<Receita> receitaEsperada = new ArrayList<>();
 		Livro receitasRuins = new Livro("Receitas ruins");
+		
 		IngredienteReceita massaMiojo = new IngredienteReceita("miojo", 1.0, UnidadeMedida.UNIDADE, 2.0);
 		Instrucao modoPreparo = new Instrucao("3 minuto tá pronto!");
+		
 		Receita miojo = new Receita("Miojo how to");
 		miojo.adicionarIngredientesNaReceita(massaMiojo);
 		miojo.adicionarInstrucao(modoPreparo);
-		//receita atualizada
+		receitasRuins.inserir(miojo);
+		
 		Receita miojoAtualizado = new Receita("Miojo Atualizado");
-		miojo.adicionarIngredientesNaReceita(massaMiojo);
-		miojo.adicionarInstrucao(modoPreparo);
+		miojoAtualizado.adicionarIngredientesNaReceita(massaMiojo);
+		miojoAtualizado.adicionarInstrucao(modoPreparo);
 		
 		receitaEsperada.add(miojoAtualizado);
-		receitasRuins.inserir(miojo);
+		
 		receitasRuins.atualizar("Miojo how to", miojoAtualizado);
 
 		assertEquals(receitaEsperada, receitasRuins.getTodasReceitas());
 		
+	}
+	
+	@Test(expected=ReceitaNulaException.class)
+	public void atualizaReceitaComNomeVazio() throws Exception {
+		Livro receitasRuins = new Livro("Receitas ruins");
+		
+		IngredienteReceita massaMiojo = new IngredienteReceita("miojo", 1.0, UnidadeMedida.UNIDADE, 2.0);
+		Instrucao modoPreparo = new Instrucao("3 minuto tá pronto!");
+		
+		Receita miojo = new Receita("Miojo how to");
+		miojo.adicionarIngredientesNaReceita(massaMiojo);
+		miojo.adicionarInstrucao(modoPreparo);
+		receitasRuins.inserir(miojo);
+
+		Receita miojoAtualizado = new Receita("");
+		miojoAtualizado.adicionarIngredientesNaReceita(massaMiojo);
+		miojoAtualizado.adicionarInstrucao(modoPreparo);
+		
+		receitasRuins.atualizar("Miojo how to", miojoAtualizado);
 	}
 	
 	
@@ -143,14 +203,17 @@ public class LivroTest {
 		
 		arrozDeForno.adicionarIngredientesNaReceita(tresXicarasDeArroz);
 		arrozDeForno.adicionarIngredientesNaReceita(salArroz);
+		arrozDeForno.adicionarInstrucao(new Instrucao("coloque o arroz no forno"));
 		receitasRuins.inserir(arrozDeForno);
 		
 		arrozDoce.adicionarIngredientesNaReceita(umaXicaraDeArroz);
 		arrozDoce.adicionarIngredientesNaReceita(leiteCondensado);
+		arrozDoce.adicionarInstrucao(new Instrucao("coloque o arroz na geladeira"));
 		receitasRuins.inserir(arrozDoce);
 		
 		carneDePanela.adicionarIngredientesNaReceita(carne);
 		carneDePanela.adicionarIngredientesNaReceita(salCarne);
+		carneDePanela.adicionarInstrucao(new Instrucao("coloque a carne na panela"));
 		receitasRuins.inserir(carneDePanela);
 		
 		receitas.add(arrozDeForno);

@@ -19,13 +19,17 @@ public class Livro implements LivroReceitas{
 	}
 	
 	public void inserir(Receita receita) {
-		if(receita.getNome() != null) {
+		if(receita.getNome().isEmpty() || receita.getIngredientesDaReceita().isEmpty() || receita.getInstrucao().isEmpty()) {
+			throw new ReceitaNulaException();
+		} else {
 			receitas.add(receita);
 		}
 	}
 	
 	public void atualizar(String nome, Receita receitaAtualizada) {
-		if(receitaAtualizada.getNome() != null) {
+		if(receitaAtualizada.getNome().isEmpty() || receitaAtualizada.getIngredientesDaReceita().isEmpty() || receitaAtualizada.getInstrucao().isEmpty()) {
+			throw new ReceitaNulaException();			
+		} else {
 			for(Receita receitaAtual : receitas) {
 				if(receitaAtual.getNome() == nome) {
 					receitas.set(receitas.indexOf(receitaAtual), receitaAtualizada);
