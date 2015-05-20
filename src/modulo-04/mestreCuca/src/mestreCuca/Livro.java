@@ -18,24 +18,20 @@ public class Livro implements LivroReceitas{
 		return this.nome;
 	}
 	
-	public void inserir(Receita receita) {
-		if(receita.getNome().isEmpty() || receita.getIngredientesDaReceita().isEmpty() || receita.getInstrucao().isEmpty()) {
-			throw new ReceitaNulaException();
-		} else {
-			receitas.add(receita);
+	private void validaReceita(Receita receita) {
+		if(receita == null || receita.getNome() == null || receita.getNome().isEmpty()) {
+			throw new ReceitaNulaException();			
 		}
+	}
+	public void inserir(Receita receita) {
+		validaReceita(receita);
+		receitas.add(receita);
 	}
 	
 	public void atualizar(String nome, Receita receitaAtualizada) {
-		if(receitaAtualizada.getNome().isEmpty() || receitaAtualizada.getIngredientesDaReceita().isEmpty() || receitaAtualizada.getInstrucao().isEmpty()) {
-			throw new ReceitaNulaException();			
-		} else {
-			for(Receita receitaAtual : receitas) {
-				if(receitaAtual.getNome() == nome) {
-					receitas.set(receitas.indexOf(receitaAtual), receitaAtualizada);
-				}
-			}
-		}
+		 validaReceita(receitaAtualizada);
+		 Receita receita = buscaReceitaPeloNome(nome);
+		 receitas.set(receitas.indexOf(receita), receitaAtualizada);
 	}
 	
 	public void excluir(String nome) {
@@ -70,14 +66,14 @@ public class Livro implements LivroReceitas{
 	}
 	
 	public List<Receita> protecaoAosAlergicos(List<IngredienteReceita> ingredientes) {
-		List<Receita> receitaSemIngrediente = new ArrayList<>();
+		List<Receita> receitasSemIngrediente = new ArrayList<>();
 		for(Receita receitaAtual : receitas) {
-			for(IngredienteReceita ingredienteAtual : receitaAtual.getIngredientesDaReceita()) {
-				if(ingredientes.contains(ingredienteAtual))
-					receitaSemIngrediente.add(receitaAtual);
+			for (IngredienteReceita ingrediente : ingredientes) {
+				if(!receitaAtual.getIngredientesDaReceita().contains(ingrediente))
+					receitasSemIngrediente.add(receitaAtual);
 			}
 		}
-		return receitaSemIngrediente;
+		return receitasSemIngrediente;
 	}
 	
 	public List<String> listaDeCompras(List<Receita> receitas) {

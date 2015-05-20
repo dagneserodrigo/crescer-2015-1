@@ -43,30 +43,6 @@ public class LivroTest {
 		receitasRuins.inserir(miojo);
 	}
 	
-	@Test(expected=ReceitaNulaException.class)
-	public void insereReceitaSemIngredientes() {
-		Livro receitasRuins = new Livro("Receitas ruins");
-
-		Instrucao modoPreparo = new Instrucao("3 minuto tá pronto!");
-		Receita miojo = new Receita("miojo how to");
-
-		miojo.adicionarInstrucao(modoPreparo);
-
-		receitasRuins.inserir(miojo);
-	}
-	
-	@Test(expected=ReceitaNulaException.class)
-	public void insereReceitaSemModoDePreparo() {
-		Livro receitasRuins = new Livro("Receitas ruins");
-		
-		IngredienteReceita massaMiojo = new IngredienteReceita("miojo", 1.0, UnidadeMedida.UNIDADE, 2.0);
-		Receita miojo = new Receita("miojo how to");
-		
-		miojo.adicionarIngredientesNaReceita(massaMiojo);
-		
-		receitasRuins.inserir(miojo);
-	}
-	
 	@Test
 	public void atualizaReceita() throws Exception {
 		List<Receita> receitaEsperada = new ArrayList<>();
@@ -180,8 +156,7 @@ public class LivroTest {
 		ingredienteAlergico.add(sorvete);
 		
 		List<Receita> receitasEsperadas = new ArrayList<>();
-		receitasEsperadas.add(lactose);
-		receitasEsperadas.add(mistura);
+		receitasEsperadas.add(arroz);		
 		
 		assertEquals(receitasEsperadas, receitasRuins.protecaoAosAlergicos(ingredienteAlergico));
 	}
