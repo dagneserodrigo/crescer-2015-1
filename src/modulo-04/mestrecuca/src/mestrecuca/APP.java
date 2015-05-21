@@ -1,4 +1,4 @@
-package mestreCuca;
+package mestrecuca;
 
 public class APP {
 	public static void main(String[] args) {

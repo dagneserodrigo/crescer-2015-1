@@ -1,6 +1,7 @@
-package mestreCuca;
+package mestrecuca;
 
 import static org.junit.Assert.*;
+import mestrecuca.Instrucao;
 
 import org.junit.Test;
 

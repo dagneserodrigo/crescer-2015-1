@@ -1,9 +1,16 @@
-package mestreCuca;
+package mestrecuca;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import mestrecuca.IngredienteReceita;
+import mestrecuca.Instrucao;
+import mestrecuca.Livro;
+import mestrecuca.Receita;
+import mestrecuca.ReceitaNulaException;
+import mestrecuca.UnidadeMedida;
 
 import org.junit.Test;
 

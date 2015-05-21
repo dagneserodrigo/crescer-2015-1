@@ -1,4 +1,4 @@
-package mestreCuca;
+package mestrecuca;
 
 public class Instrucao {
 	private String descricao;

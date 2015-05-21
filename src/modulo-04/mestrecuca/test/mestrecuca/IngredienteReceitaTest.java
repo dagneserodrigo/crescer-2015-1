@@ -1,6 +1,8 @@
-package mestreCuca;
+package mestrecuca;
 
 import static org.junit.Assert.*;
+import mestrecuca.IngredienteReceita;
+import mestrecuca.UnidadeMedida;
 
 import org.junit.Test;
 

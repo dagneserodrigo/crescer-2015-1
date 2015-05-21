@@ -1,4 +1,4 @@
-package mestreCuca;
+package mestrecuca;
 
 public class ReceitaNaoEncontradaException extends RuntimeException {
 	public ReceitaNaoEncontradaException() {

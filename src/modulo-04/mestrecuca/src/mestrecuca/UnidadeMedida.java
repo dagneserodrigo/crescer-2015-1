@@ -1,4 +1,4 @@
-package mestreCuca;
+package mestrecuca;
 
 public enum UnidadeMedida {
 	KG("Kg"),
