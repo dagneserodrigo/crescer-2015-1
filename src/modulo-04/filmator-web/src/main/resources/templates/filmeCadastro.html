@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastro de Filmes</title>
+		<style type="text/css">
+			input {
+				display: block;
+			}
+			label {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>Cadastro de Filme</h3>
+		<form action="/salvar" method="POST">
+			<label>Nome:</label>
+			<input type="text" name="nome">
+			<label>Gênero:</label>
+			<select name="genero">
+				<option value="">Escolher</option>
+				{{#generos}}
+					<option value="{{.}}">{{generos}}</option>
+				{{/generos}}
+			</select>
+			<label>Ano de lançamento:</label>
+			<input name="anoLancamento" type="number">
+			<label>Sinopse:</label>
+			<textarea name="sinopse" id="" cols="30" rows="10"></textarea>
+			<label>Imagem:</label>
+			<input name="imagem" type="text">
+			<button type="submit">Cadastrar</button>
+		</form>
+	</body>
+</html>
+
