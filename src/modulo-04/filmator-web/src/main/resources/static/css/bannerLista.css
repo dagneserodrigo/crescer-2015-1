@@ -1,0 +1,21 @@
+body {
+  padding-top: 65px;
+  background-color: #eee;
+}
+
+table td, th {
+	width: 90%;
+}
+
+.remove {
+	text-align: center;
+	width: 10%;
+}
+
+.remove a {
+	outline: 0;
+}
+
+.remove a:hover {
+	color: #34495e;
+}

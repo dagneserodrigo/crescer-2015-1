@@ -1,0 +1,36 @@
+body {
+	padding-top: 51px;
+	padding-bottom: 0;
+}
+
+.actors, .films {
+	text-align: center;
+}
+
+.films {
+	margin-top: 80px;
+}
+
+.actors {
+	margin-bottom: 100px;
+}
+
+.carousel {
+	height: 600px;
+}
+
+.carousel-inner{
+	height: 100%;
+}
+.carousel-caption {
+	bottom: 0;
+  	height: 100%;
+ 	position: absolute;
+	right: 0%;
+	left: 0;
+	padding: 0;
+}
+
+.featurette-divider {
+	margin: 100px 0;
+}
