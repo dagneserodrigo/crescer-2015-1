@@ -7,42 +7,66 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-	<style type="text/css">
-		body {
-			background: rgba(44, 62, 80, 1.0);
-		}
-		.main {
-			position: relative;
-			top: 100px;
-			width: 40%;
-			height: 200px;
-			margin: 20px auto;
-			padding-top: 2px;
-			background-color: #fff;
-			border-radius: 2px;
-			z-index: 999;
-		}
-		h2 {
-			padding: 0 10px 2px 10px;
-			margin-bottom: 20px;
-			border-bottom: 1px solid #ccc;
-		}
-		.buttons {
-			margin-top: 40px; 
-			text-align: center;
-		}
-	</style>
+	<link href="/css/carousel.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/home.css">
 </head>
 <body>
-	<section class="main">
-		<h2 class="title">Filmator <span class="glyphicon glyphicon-film"></span></h2>
-		<div class="buttons">
-			<a href="/inserir"><button class="btn btn-default btn-lg">Cadastrar Filmes</button></a>
-			<a href="/consultarFilme"><button class="btn btn-default btn-lg">Consultar Filmes</button></a>
+	{{> menu}}
+
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			{{#banners}}
+				<li data-target="#myCarousel" data-slide-to="0" class="indicator"></li>
+			{{/banners}}
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			{{#banners}}
+			<div class="item">
+				<img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+				<div class="container">
+					<div class="carousel-caption">
+						<img src="{{nome}}">
+					</div>
+				</div>
+			</div>
+			{{/banners}}
 		</div>
+		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+    <section class="container-fluid">
+    	<section class="row films">
+    		{{#filmes}}
+			<div class="col-md-4">
+				<img class="img-thumbnail" src="{{Imagem}}" alt="Generic placeholder image" width="300" height="300">
+				<h2>{{nome}}</h2>
+				<p>Ano de lançamento: {{anoLancamento}}</p>
+				<p>Gênero: {{genero}}</p>
+			</div>
+			{{/filmes}}
+    	</section>
+		<hr class="featurette-divider">
+    	<section class="row actors">
+    		{{#atores}}
+			<div class="col-md-4">
+				<img class="img-thumbnail" src="{{imagem}}" alt="Generic placeholder image" width="300" height="300">
+				<h2>{{nome}}</h2>
+				<p>{{informacao}}</p>
+			</div>
+			{{/atores}}
+    	</section>
 	</section>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="/js/home.js"></script>
 </body>
 </html>
