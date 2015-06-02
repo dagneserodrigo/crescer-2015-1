@@ -1,0 +1,6 @@
+C:\Users\Rodrigo\Documents\ProjetoCrescer\src\modulo-05-dotnet\Dia01.ConsoleApp\Dia01.ConsoleApp\bin\Debug\Dia01.ConsoleApp.exe.config
+C:\Users\Rodrigo\Documents\ProjetoCrescer\src\modulo-05-dotnet\Dia01.ConsoleApp\Dia01.ConsoleApp\bin\Debug\Dia01.ConsoleApp.exe
+C:\Users\Rodrigo\Documents\ProjetoCrescer\src\modulo-05-dotnet\Dia01.ConsoleApp\Dia01.ConsoleApp\bin\Debug\Dia01.ConsoleApp.pdb
+C:\Users\Rodrigo\Documents\ProjetoCrescer\src\modulo-05-dotnet\Dia01.ConsoleApp\Dia01.ConsoleApp\obj\Debug\Dia01.ConsoleApp.csprojResolveAssemblyReference.cache
+C:\Users\Rodrigo\Documents\ProjetoCrescer\src\modulo-05-dotnet\Dia01.ConsoleApp\Dia01.ConsoleApp\obj\Debug\Dia01.ConsoleApp.exe
+C:\Users\Rodrigo\Documents\ProjetoCrescer\src\modulo-05-dotnet\Dia01.ConsoleApp\Dia01.ConsoleApp\obj\Debug\Dia01.ConsoleApp.pdb
