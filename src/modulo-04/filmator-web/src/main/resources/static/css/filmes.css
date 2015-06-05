@@ -1,4 +1,14 @@
-.list {
+.search {
 	margin-top: 85px;
 	text-align: center;
+}
+
+.list {
+	margin-top:25px;
+	text-align: center;
+}
+
+.film {
+	height: 85vh;
+	margin-bottom: 70px;
 }

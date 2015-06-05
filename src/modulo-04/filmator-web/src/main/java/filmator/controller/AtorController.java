@@ -80,4 +80,13 @@ public class AtorController {
 		model.addAttribute("atores", atorDao.buscaTodosAtores());
 		return "atores";
 	}
+	
+	@RequestMapping(value = "/pesquisarAtor", method = RequestMethod.GET)
+	public String procurarAtor(Model model, String nome, HttpSession session) {
+		if(usuarioDao.usuarioEstaLogado(session)) {
+			model.addAttribute("usuarioLogado", true);
+		}
+		model.addAttribute("atores", atorDao.buscaAtorPeloNome(nome));
+		return "atores";
+	}
 }

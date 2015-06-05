@@ -1,9 +1,5 @@
 package filmator.dao;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.util.List;
 
@@ -13,8 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import filmator.model.Filme;
-import filmator.model.Genero;
 import filmator.model.Usuario;
 
 @Component
@@ -24,13 +18,19 @@ public class UsuarioDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	
-	public Usuario existeUsuario(Usuario user) {
-		return jdbcTemplate.queryForObject("SELECT IDUsuario, Login FROM Usuario WHERE Login = ? AND Senha = ?", new String[]{user.getLogin(), user.getSenha()}, (ResultSet rs, int rowNum) -> {
+	public Usuario existeUsuario(String login, String senha) {
+		List<Usuario> usuarios = jdbcTemplate.query("SELECT IDUsuario, Login FROM Usuario WHERE Login = ? AND Senha = ?", (ResultSet rs, int rowNum) -> {
 			Usuario usuario = new Usuario();
 			usuario.setIdUsuario(rs.getInt("IDUsuario"));
 			usuario.setLogin(rs.getString("Login"));
 			return usuario;
-		});
+		},  login, senha);
+
+		if( usuarios.size() >= 1 ){
+			return usuarios.get(0);
+		}
+		
+		return null;
 	}
 	
 	public boolean usuarioEstaLogado(HttpSession session) {
@@ -41,16 +41,6 @@ public class UsuarioDao {
 	}
 	
 	public void inserir(Usuario usuario) {
-
-//		String senha = usuario.getSenha();
-//		MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
-//		byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
-//		StringBuilder hexString = new StringBuilder();
-//		for (byte b : messageDigest) {
-//			hexString.append(String.format("%02X", 0xFF & b));
-//		}
-//		String senhahex = hexString.toString();
-
 		jdbcTemplate.update("INSERT INTO Usuario (Login, Senha) VALUES (?, ?)", usuario.getLogin(), usuario.getSenha());
 	}
 	

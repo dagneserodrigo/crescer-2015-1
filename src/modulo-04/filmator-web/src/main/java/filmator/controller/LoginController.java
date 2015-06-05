@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import filmator.dao.UsuarioDao;
 import filmator.model.Usuario;
@@ -20,13 +22,16 @@ public class LoginController {
 	  return "login";
 	}
 	
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String efetuaLogin(Usuario usuario, HttpSession session) {
-	  if(usuarioDao.existeUsuario(usuario) != null) {
-	    session.setAttribute("usuarioLogado", usuario);
-	    return "redirect:/";
-	  }
-	  return "redirect:login";
+	@ResponseBody
+	public String efetuaLogin(@RequestParam()String login, @RequestParam() String senha, HttpSession session) {
+		Usuario usuarioLogado = usuarioDao.existeUsuario(login, senha);
+		if(usuarioLogado != null) {
+			session.setAttribute("usuarioLogado", usuarioLogado);
+			return "true";
+		}
+		return "false";
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

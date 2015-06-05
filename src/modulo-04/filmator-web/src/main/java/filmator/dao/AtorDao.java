@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import filmator.model.Ator;
-import filmator.model.Filme;
 
 @Component
 public class AtorDao {
@@ -29,16 +28,6 @@ public class AtorDao {
 			ator.setImagem(rs.getString("Imagem"));
 			return ator;
 		});	
-	}
-	
-	public List<Ator> buscaAtorPeloNome(String nome) {
-		return jdbcTemplate.query("SELECT Nome, Informacao, Imagem FROM Ator WHERE Nome LIKE ? or Nome LIKE ?", new String[]{nome.toLowerCase() + "%", nome.toUpperCase() + "%"} , (ResultSet rs, int rowNum) -> {
-			Ator ator = new Ator();
-			ator.setNome(rs.getString("Nome"));
-			ator.setInformacao(rs.getString("Informacao"));
-			ator.setImagem(rs.getString("Imagem"));
-			return ator;
-		});
 	}
 	
 	public List<Ator> buscaAtoresDestaques() {
@@ -69,5 +58,15 @@ public class AtorDao {
 	public void atualizarAtor(Ator ator) {
 		jdbcTemplate.update("UPDATE Ator SET Nome = ?, Informacao = ?, Imagem = ? WHERE IDAtor = ?", 
 									ator.getNome(), ator.getInformacao(), ator.getImagem(), ator.getIdAtor());
+	}
+	
+	public List<Ator> buscaAtorPeloNome(String nome) {
+		return jdbcTemplate.query("SELECT Nome, Informacao, Imagem FROM Ator WHERE UPPER(Nome) LIKE UPPER(?)", (ResultSet rs, int rowNum) -> {
+			Ator ator = new Ator();
+			ator.setNome(rs.getString("Nome"));
+			ator.setInformacao(rs.getString("Informacao"));
+			ator.setImagem(rs.getString("Imagem"));
+			return ator;
+		}, "%" + nome.toUpperCase() + "%");
 	}
 }

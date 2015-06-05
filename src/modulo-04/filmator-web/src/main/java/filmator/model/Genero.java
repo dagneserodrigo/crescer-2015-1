@@ -4,7 +4,11 @@ public enum Genero {
 	COMEDIA("Comédia"),
 	ACAO("Ação"),
 	SUSPENSE("Suspense"),
-	TERROR("Terror");
+	TERROR("Terror"),
+	ANIMACAO("Animação"),
+	DRAMA("Drama"),
+	FICCAO("Ficçao Científica"),
+	AVENTURA("Aventura");
 	
 	String nome;
 

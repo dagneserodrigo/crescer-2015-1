@@ -8,7 +8,6 @@ import org.springframework.beans.propertyeditors.LocaleEditor;
 import org.springframework.boot.autoconfigure.mustache.web.MustacheView;
 import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.View;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import com.samskivert.mustache.Mustache;

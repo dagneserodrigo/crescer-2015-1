@@ -30,9 +30,8 @@ public class AvaliacaoController {
 			return "redirect:/login";
 		}
 		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
-		System.out.println(usuario.getIdUsuario());
 		avaliacao.setIdUsuario(usuario.getIdUsuario());
-		if(avaliacao.getIdAvaliacao() != null) {
+		if(avaliacaoDao.usuarioJaAvaliouOFilme(avaliacao)) {
 			avaliacaoDao.atualizarAvaliacao(avaliacao);
 		} else {
 			avaliacaoDao.inserir(avaliacao);

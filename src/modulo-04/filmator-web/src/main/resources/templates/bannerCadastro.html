@@ -3,10 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Cadastro de banner</title>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		{{> bootstrapcss}}
 		<link rel="stylesheet" href="/css/bannerCadastro.css">
 	</head>
 	<body>
@@ -20,7 +17,7 @@
 						<div class="form-group">
 							<label for="imagem" class="col-sm-2 control-label">Imagem:</label>
 							<div class="col-sm-10">
-								<input type="text" name="nome" id="imagem" class="form-control" value="{{#banner}}{{nome}}{{/banner}}">
+								<input type="text" name="nome" id="imagem" class="form-control" value="{{#banner}}{{nome}}{{/banner}}" required>
 							</div>
 						</div>
 						<div class="form-group">
@@ -32,9 +29,6 @@
 				</div>
 			</section>
 		</section>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		{{> javascript}}
 	</body>
 </html>
-

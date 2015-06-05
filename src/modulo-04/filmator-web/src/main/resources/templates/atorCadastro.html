@@ -3,10 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Cadastro de ator</title>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		{{> bootstrapcss}}
 		<link rel="stylesheet" href="/css/atorCadastro.css">
 	</head>
 	<body>
@@ -16,23 +13,23 @@
 				<div class="col-md-8 col-md-offset-2">
 					<form class="form-horizontal" action="/atorCadastro" method="post">
 						<h2 class="form-signin-heading">Cadastro de ator</h2>
-						<input type="hidden" name="idAtor" value="{{#ator}}{{idAtor}}{{/ator}}">
+						<input type="hidden" name="idAtor" value="{{#ator}}{{idAtor}}{{/ator}}" required>
 						<div class="form-group">
 							<label for="nome" class="col-sm-2 control-label">Nome:</label>
 							<div class="col-sm-10">
-								<input type="text" name="nome" id="nome" class="form-control" value="{{#ator}}{{nome}}{{/ator}}">
+								<input type="text" name="nome" id="nome" class="form-control" value="{{#ator}}{{nome}}{{/ator}}" required>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="informacao" class="col-sm-2 control-label">Informação:</label>
 							<div class="col-sm-10">
-								<textarea name="informacao" id="informacao" class="form-control" rows="5">{{#ator}}{{informacao}}{{/ator}}</textarea>
+								<textarea name="informacao" id="informacao" class="form-control" rows="5" required>{{#ator}}{{informacao}}{{/ator}}</textarea>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="imagem" class="col-sm-2 control-label">Imagem:</label>
 							<div class="col-sm-10">
-								<input type="text" name="imagem" id="imagem" class="form-control" value="{{#ator}}{{imagem}}{{/ator}}">
+								<input type="text" name="imagem" id="imagem" class="form-control" value="{{#ator}}{{imagem}}{{/ator}}" required>
 							</div>
 						</div>
 						<div class="form-group">
@@ -44,9 +41,6 @@
 				</div>
 			</section>
 		</section>
-		<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		{{> javascript}}
 	</body>
 </html>
-

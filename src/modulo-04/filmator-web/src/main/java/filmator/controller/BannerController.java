@@ -60,6 +60,7 @@ public class BannerController {
 			return "redirect:/login";
 		}
 		model.addAttribute("usuarioLogado", true);
+		bannerDao.excluirBanner(idBanner);
 		return "redirect:bannerLista";
 	}
 	

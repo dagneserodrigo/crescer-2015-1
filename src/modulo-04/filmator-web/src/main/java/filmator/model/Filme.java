@@ -8,6 +8,7 @@ public class Filme {
 	private int anoLancamento;
 	private String sinopse;
 	private String imagem;
+	private Integer nota;
 	
 	public Filme() {
 	}
@@ -66,5 +67,13 @@ public class Filme {
 
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
+	}
+	
+	public Integer getNota(){
+		return this.nota;
+	}
+	
+	public void setNota(Integer nota) {
+		this.nota = nota;
 	}
 }

@@ -12,6 +12,7 @@ import filmator.dao.FilmeDao;
 import filmator.dao.UsuarioDao;
 import filmator.model.Filme;
 import filmator.model.Genero;
+import filmator.model.Usuario;
 
 @Controller
 public class FilmeController {
@@ -50,8 +51,9 @@ public class FilmeController {
 		if(!usuarioDao.usuarioEstaLogado(session)) {
 			return "redirect:/login";
 		}
+		Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
 		model.addAttribute("usuarioLogado", true);
-		model.addAttribute("filmes", filmeDao.buscaTodosFilmes());
+		model.addAttribute("filmes", filmeDao.buscaTodosFilmesPorUsuario(usuario.getIdUsuario()));
 		return "filmeLista";
 	}
 	
@@ -84,9 +86,12 @@ public class FilmeController {
 		return "filmes";
 	}
 
-//	@RequestMapping(value = "/procurar", method = RequestMethod.GET)
-//	public String procurar(Model model, @RequestParam String nome) {
-//		model.addAttribute("filmes", filmeDao.buscaFilmePeloNome(nome));
-//		return "filmeConsulta";
-//	}
+	@RequestMapping(value = "/pesquisarFilme", method = RequestMethod.GET)
+	public String procurarFilme(Model model, String nome, HttpSession session) {
+		if(usuarioDao.usuarioEstaLogado(session)) {
+			model.addAttribute("usuarioLogado", true);
+		}
+		model.addAttribute("filmes", filmeDao.buscaFilmePeloNome(nome));
+		return "filmes";
+	}
 }
