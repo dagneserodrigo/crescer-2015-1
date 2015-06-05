@@ -4,7 +4,7 @@ $(function(){
 
 		var nota = $( this ).attr('nota');
 
-		if(nota === 0 ){
+		if(nota === 0.0 ){
 			$( this ).find('img[value]').attr('nota');
 		}
 

@@ -4,11 +4,11 @@ public class Avaliacao {
 	private Integer idAvaliacao;
 	private Integer idFilme;
 	private Integer idUsuario;
-	private int nota;
+	private Double nota;
 	
 	public Avaliacao() {}
 	
-	public Avaliacao(Integer idFilme, Integer idUsuario, Integer nota) {
+	public Avaliacao(Integer idFilme, Integer idUsuario, Double nota) {
 		this.idFilme = idFilme;
 		this.idUsuario = idUsuario;
 		this.nota = nota;
@@ -32,10 +32,10 @@ public class Avaliacao {
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	public int getNota() {
+	public Double getNota() {
 		return nota;
 	}
-	public void setNota(int nota) {
+	public void setNota(Double nota) {
 		this.nota = nota;
 	}
 }

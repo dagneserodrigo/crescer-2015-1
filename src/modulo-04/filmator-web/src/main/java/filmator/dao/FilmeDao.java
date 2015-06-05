@@ -33,13 +33,13 @@ public class FilmeDao {
 			filme.setAnoLancamento(rs.getInt("AnoLancamento"));
 			filme.setSinopse(rs.getString("Sinopse"));
 			filme.setImagem(rs.getString("Imagem"));
-			filme.setNota(rs.getInt("Nota"));
+			filme.setNota(rs.getDouble("Nota"));
 			return filme;
 		});	
 	}
 	
 	public List<Filme> buscaTodosFilmes(){
-		return jdbcTemplate.query("SELECT f.IDFilme, f.Nome, f.Genero, f.AnoLancamento, f.Sinopse, f.Imagem, AVG(a.nota) as Nota FROM Filme f left join Avaliacao a on f.IDFilme = a.IDFilme group by f.IDFilme, f.Nome, f.Genero, f.AnoLancamento, f.Sinopse, f.Imagem;", (ResultSet rs, int rowNum) -> {
+		return jdbcTemplate.query("SELECT f.IDFilme, f.Nome, f.Genero, f.AnoLancamento, f.Sinopse, f.Imagem, SUM(a.nota) as Nota FROM Filme f left join Avaliacao a on f.IDFilme = a.IDFilme group by f.IDFilme, f.Nome, f.Genero, f.AnoLancamento, f.Sinopse, f.Imagem;", (ResultSet rs, int rowNum) -> {
 			Filme filme = new Filme();
 			filme.setIdFilme(rs.getInt("IDFilme"));
 			filme.setNome(rs.getString("Nome"));
@@ -47,7 +47,7 @@ public class FilmeDao {
 			filme.setAnoLancamento(rs.getInt("AnoLancamento"));
 			filme.setSinopse(rs.getString("Sinopse"));
 			filme.setImagem(rs.getString("Imagem"));
-			filme.setNota(rs.getInt("Nota"));
+			filme.setNota(calculaMedia(rs.getInt("Nota")));
 			return filme;
 		});	
 	}
@@ -60,9 +60,17 @@ public class FilmeDao {
 			filme.setAnoLancamento(rs.getInt("AnoLancamento"));
 			filme.setSinopse(rs.getString("Sinopse"));
 			filme.setImagem(rs.getString("Imagem"));
-			filme.setNota(rs.getInt("Nota"));
+			filme.setNota(calculaMedia(rs.getInt("Nota")));
 			return filme;
 		}, "%" + nome.toUpperCase() + "%");
+	}
+	
+	private double calculaMedia(double nota) {
+		int usuarios = numeroDeUsuarios();
+		if(usuarios != 0){
+			return  Math.round((nota/usuarios) * 2.0) / 2.0;
+		}
+		return  Math.round(nota) / 2.0;
 	}
 	
 	public List<Filme> buscaFilmesDestaques() {
@@ -73,7 +81,7 @@ public class FilmeDao {
 			filme.setAnoLancamento(rs.getInt("AnoLancamento"));
 			filme.setSinopse(rs.getString("Sinopse"));
 			filme.setImagem(rs.getString("Imagem"));
-			filme.setNota(rs.getInt("Nota"));
+			filme.setNota(rs.getDouble("Nota"));
 			return filme;
 		});
 	}
@@ -99,6 +107,11 @@ public class FilmeDao {
 	public void atualizarFilme(Filme filme) {
 		jdbcTemplate.update("UPDATE Filme SET Nome = ?, Genero = ?, AnoLancamento = ?, Sinopse = ?, Imagem = ? WHERE IDFilme = ?", 
 									filme.getNome(), filme.getGenero().name(), filme.getAnoLancamento(), filme.getSinopse(), filme.getImagem(), filme.getIdFilme());
+	}
+	
+	public int numeroDeUsuarios(){
+		return jdbcTemplate.queryForObject(
+				"SELECT COUNT(1) FROM Usuario", Integer.class);
 	}
 }
  
